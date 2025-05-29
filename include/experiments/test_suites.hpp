@@ -2,11 +2,11 @@
 #define CELLATO_TEST_SUITES_HPP
 
 #include "../evaluators/standard.hpp"
-#include "../evaluators/bit_plates.hpp"
+#include "../evaluators/bit_planes.hpp"
 #include "../evaluators/bit_array.hpp"
 #include "../memory/standard_grid.hpp"
 #include "../traversers/cpu/simple.hpp"
-#include "../memory/bit_plates_grid.hpp"
+#include "../memory/bit_planes_grid.hpp"
 #include "../memory/bit_array_grid.hpp"
 #include "../traversers/cuda/simple.hpp"
 #include "../traversers/cuda/spacial_blocking.hpp"
@@ -110,7 +110,7 @@ namespace on_cuda {
         };
 
         template <typename cellular_automaton>
-        struct bit_plates {
+        struct bit_planes {
             using automaton = cellular_automaton;
 
             using original_cell_t = typename cellular_automaton::cell_state;
@@ -119,8 +119,8 @@ namespace on_cuda {
             using algorithm_t = typename cellular_automaton::algorithm;
             using state_dictionary_t = typename cellular_automaton::state_dictionary;
 
-            using grid_t = grids::bit_plates::grid<grid_store_word_t, state_dictionary_t>;
-            using evaluator_t = evaluators::bit_plates::evaluator<grid_store_word_t, state_dictionary_t, algorithm_t>; 
+            using grid_t = grids::bit_planes::grid<grid_store_word_t, state_dictionary_t>;
+            using evaluator_t = evaluators::bit_planes::evaluator<grid_store_word_t, state_dictionary_t, algorithm_t>; 
 
             using traverser_t = traversers::simple::traverser<evaluator_t, grid_t>;
 
@@ -131,8 +131,8 @@ namespace on_cuda {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CUDA_OPT &&
-                       params.evaluator == "bit_plates" &&
-                       params.layout == "bit_plates" &&
+                       params.evaluator == "bit_planes" &&
+                       params.layout == "bit_planes" &&
                        params.precision == sizeof(grid_store_word_t) * 8;
             }
         };
@@ -201,7 +201,7 @@ namespace on_cpu {
         };
 
         template <typename cellular_automaton>
-        struct bit_plates {
+        struct bit_planes {
             using automaton = cellular_automaton;
             
             using original_cell_t = typename cellular_automaton::cell_state;
@@ -210,8 +210,8 @@ namespace on_cpu {
             using algorithm_t = typename cellular_automaton::algorithm;
             using state_dictionary_t = typename cellular_automaton::state_dictionary;
 
-            using grid_t = grids::bit_plates::grid<grid_store_word_t, state_dictionary_t>;
-            using evaluator_t = evaluators::bit_plates::evaluator<grid_store_word_t, state_dictionary_t, algorithm_t>; 
+            using grid_t = grids::bit_planes::grid<grid_store_word_t, state_dictionary_t>;
+            using evaluator_t = evaluators::bit_planes::evaluator<grid_store_word_t, state_dictionary_t, algorithm_t>; 
             
             using traverser_t = traversers::simple::traverser<evaluator_t, grid_t>;
 
@@ -222,8 +222,8 @@ namespace on_cpu {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CPU_OPT &&
-                       params.evaluator == "bit_plates" &&
-                       params.layout == "bit_plates" &&
+                       params.evaluator == "bit_planes" &&
+                       params.layout == "bit_planes" &&
                        params.precision == sizeof(grid_store_word_t) * 8;
             }
         };

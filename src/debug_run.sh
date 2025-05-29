@@ -16,8 +16,8 @@ args="--automaton game-of-life \
 # Wire automaton with bit_array grid and spatial blocking
 #args="--automaton wire --device CUDA --layout bit_array --traverser spacial_blocking --x_tile_size 8 --y_tile_size 8 --steps 200 --x_size 4096 --y_size 4096"
 
-# Greenberg automaton on CPU with bit_plates
-#args="--automaton greenberg --device CPU --layout bit_plates --evaluator bit_plates --steps 150 --x_size 512 --y_size 512 --precision 64"
+# Greenberg automaton on CPU with bit_planes
+#args="--automaton greenberg --device CPU --layout bit_planes --evaluator bit_planes --steps 150 --x_size 512 --y_size 512 --precision 64"
 
 # Game of Life on CPU for comparison with CUDA
 #args="--automaton game_of_life --device CPU --layout standard --steps 100 --x_size 1024 --y_size 1024"

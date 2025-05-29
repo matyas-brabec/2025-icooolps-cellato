@@ -2,7 +2,7 @@
 #define CELLATO_TESTS_BIT_EVALUATOR_HPP
 
 #include "manager.hpp"
-#include "../evaluators/bit_plates.hpp"
+#include "../evaluators/bit_planes.hpp"
 #include "../core/ast.hpp"
 #include "../core/vector_int.hpp"
 #include <vector>
@@ -31,7 +31,7 @@ using dying = cellato::ast::state_constant<BitEvalTestState::DYING>;
 
 // Helper for tests to avoid long type names
 template <typename Algorithm>
-using bit_evaluator_t = cellato::evaluators::bit_plates::evaluator<uint8_t, BitEvalTestDict, Algorithm>;
+using bit_evaluator_t = cellato::evaluators::bit_planes::evaluator<uint8_t, BitEvalTestDict, Algorithm>;
 
 class bit_evaluator_test_suite : public test_suite {
 public:

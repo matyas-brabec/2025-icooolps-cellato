@@ -234,7 +234,7 @@ cellato::run::run_params get_params(int argc, char* argv[]) {
     };
 
     if (parser.exists("evaluator")) {
-        if (parser.get("evaluator") == "bit_plates" || parser.get("evaluator") == "bit_array") {
+        if (parser.get("evaluator") == "bit_planes" || parser.get("evaluator") == "bit_array") {
             required.push_back("precision");
         }
     }
@@ -298,8 +298,8 @@ void print_usage() {
     std::cout << "  --automaton <name>           Name of the cellular automaton\n";
     std::cout << "  --device <name>              Device to run on (CPU, CUDA)\n";
     std::cout << "  --traverser <name>           Traverser type (simple, spacial_blocking)\n";
-    std::cout << "  --evaluator <name>           Evaluator type (standard, bit_plates)\n";
-    std::cout << "  --layout <name>              Layout type (standard, bit_array, bit_plates)\n";
+    std::cout << "  --evaluator <name>           Evaluator type (standard, bit_planes)\n";
+    std::cout << "  --layout <name>              Layout type (standard, bit_array, bit_planes)\n";
     std::cout << "  --reference_impl <name>      Reference implementation to use (baseline, kokkos, halide, gridtools)\n";
     std::cout << "  --x_size <number>            X size of the grid\n";
     std::cout << "  --y_size <number>            Y size of the grid\n";
@@ -348,16 +348,16 @@ int main(int argc, char* argv[]) {
         test::on_cpu::standard<automaton>, \
         test::on_cpu::using_<std::uint32_t>::bit_array<automaton>, \
         test::on_cpu::using_<std::uint64_t>::bit_array<automaton>, \
-        test::on_cpu::using_<std::uint32_t>::bit_plates<automaton>, \
-        test::on_cpu::using_<std::uint64_t>::bit_plates<automaton>, \
+        test::on_cpu::using_<std::uint32_t>::bit_planes<automaton>, \
+        test::on_cpu::using_<std::uint64_t>::bit_planes<automaton>, \
         test::on_cuda::standard<automaton>, \
         test::on_cuda::standard<automaton>::with_spacial_blocking<1, 1>, \
         test::on_cuda::standard<automaton>::with_spacial_blocking<2, 1>, \
         test::on_cuda::standard<automaton>::with_spacial_blocking<4, 1>, \
         test::on_cuda::using_<std::uint32_t>::bit_array<automaton>, \
         test::on_cuda::using_<std::uint64_t>::bit_array<automaton>, \
-        test::on_cuda::using_<std::uint32_t>::bit_plates<automaton>, \
-        test::on_cuda::using_<std::uint64_t>::bit_plates<automaton>
+        test::on_cuda::using_<std::uint32_t>::bit_planes<automaton>, \
+        test::on_cuda::using_<std::uint64_t>::bit_planes<automaton>
 
     switch_<
         cases_for(_game_of_life_),

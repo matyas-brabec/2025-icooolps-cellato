@@ -1,5 +1,5 @@
-#ifndef CELLATO_EVALUATORS_BIT_PLATES_HPP
-#define CELLATO_EVALUATORS_BIT_PLATES_HPP
+#ifndef CELLATO_EVALUATORS_BIT_PLANES_HPP
+#define CELLATO_EVALUATORS_BIT_PLANES_HPP
 
 #include <tuple>
 #include <vector>
@@ -12,7 +12,7 @@
 
 #include "../core/ast.hpp"
 #include "../core/vector_int.hpp"
-#include "../memory/bit_plates_grid.hpp"
+#include "../memory/bit_planes_grid.hpp"
 #include "../memory/grid_utils.hpp"
 #include "../memory/interface.hpp"
 
@@ -23,7 +23,7 @@
 #define CUDA_CALLABLE
 #endif
 
-namespace cellato::evaluators::bit_plates {
+namespace cellato::evaluators::bit_planes {
 
 using namespace cellato::ast;
 using namespace cellato::core::bitwise;
@@ -288,6 +288,6 @@ struct evaluator<
     }
 };
 
-} // namespace cellato::evaluators::bit_plates
+} // namespace cellato::evaluators::bit_planes
 
-#endif // CELLATO_EVALUATORS_BIT_PLATES_HPP
+#endif // CELLATO_EVALUATORS_BIT_PLANES_HPP

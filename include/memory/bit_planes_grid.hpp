@@ -1,5 +1,5 @@
-#ifndef CELLATO_BIT_PLATES_GRID_HPP
-#define CELLATO_BIT_PLATES_GRID_HPP
+#ifndef CELLATO_BIT_PLANES_GRID_HPP
+#define CELLATO_BIT_PLANES_GRID_HPP
 
 #include <tuple>
 #include <vector>
@@ -15,7 +15,7 @@
 #include "standard_grid.hpp"
 #include "grid_utils.hpp"
 
-namespace cellato::memory::grids::bit_plates {
+namespace cellato::memory::grids::bit_planes {
 
 using namespace cellato::memory::grids::utils;
 using namespace cellato::memory::grids;
@@ -31,8 +31,8 @@ template <typename store_word_type, typename states_dict_t, device device_type =
 class grid {
     public:
 
-    friend class cellato::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CPU>;
-    friend class cellato::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CUDA>;
+    friend class cellato::memory::grids::bit_planes::grid<store_word_type, states_dict_t, device::CPU>;
+    friend class cellato::memory::grids::bit_planes::grid<store_word_type, states_dict_t, device::CUDA>;
 
     constexpr static bool HAS_OWN_PRINT = false;
 
@@ -141,7 +141,7 @@ class grid {
         std::array<store_word_type*, needed_bits> device_data;
         size_t data_size = y_size_physical() * x_size_physical() * sizeof(store_word_type);
         
-        // Allocate and copy each bit plate
+        // Allocate and copy each bit plane
         for_each_bit([&]<std::size_t bit_idx>() {
             cudaMalloc((void**)&device_data[bit_idx], data_size);
             cudaMemcpy(device_data[bit_idx], 
@@ -166,7 +166,7 @@ class grid {
         grid<store_word_type, states_dict_t, device::CPU> cpu_grid(_y_size, _x_size * word_store_bits);
         size_t data_size = y_size_physical() * x_size_physical() * sizeof(store_word_type);
         
-        // Copy each bit plate back to host
+        // Copy each bit plane back to host
         for_each_bit([&]<std::size_t bit_idx>() {
             cudaMemcpy(std::get<bit_idx>(cpu_grid._grid).data(), 
                        _cuda_data[bit_idx], 
@@ -282,4 +282,4 @@ class grid {
 
 }
 
-#endif // CELLATO_BIT_PLATES_GRID_HPP
+#endif // CELLATO_BIT_PLANES_GRID_HPP

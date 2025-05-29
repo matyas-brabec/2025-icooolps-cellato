@@ -2,7 +2,7 @@
 
 // Include all test headers
 #include "../include/tests/manager.hpp"
-#include "../include/tests/bit_plates_grid.hpp"
+#include "../include/tests/bit_planes_grid.hpp"
 #include "../include/tests/bit_array_grid.hpp"
 #include "../include/tests/vector-int.hpp"
 #include "../include/tests/bit_evaluator.hpp"
@@ -12,7 +12,7 @@ using namespace cellato::tests;
 int main(int argc, char* argv[]) {
     // Register all test suites
 
-    register_bit_plates_grid_tests();
+    register_bit_planes_grid_tests();
     register_bit_array_grid_tests();
     register_vector_int_tests();
     register_bit_evaluator_tests();

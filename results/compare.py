@@ -51,18 +51,18 @@ def process_data(df):
             else:
                 standard_impl_ns = None
             
-            # Get bit_array and bit_plates results
+            # Get bit_array and bit_planes results
             bit_array_32 = automaton_df[(automaton_df['evaluator'] == 'bit_array') & 
                                        (automaton_df['layout'] == 'bit_array') & 
                                        (automaton_df['precision'] == 32)]
             bit_array_64 = automaton_df[(automaton_df['evaluator'] == 'bit_array') & 
                                        (automaton_df['layout'] == 'bit_array') & 
                                        (automaton_df['precision'] == 64)]
-            bit_plates_32 = automaton_df[(automaton_df['evaluator'] == 'bit_plates') & 
-                                        (automaton_df['layout'] == 'bit_plates') & 
+            bit_planes_32 = automaton_df[(automaton_df['evaluator'] == 'bit_planes') & 
+                                        (automaton_df['layout'] == 'bit_planes') & 
                                         (automaton_df['precision'] == 32)]
-            bit_plates_64 = automaton_df[(automaton_df['evaluator'] == 'bit_plates') & 
-                                        (automaton_df['layout'] == 'bit_plates') & 
+            bit_planes_64 = automaton_df[(automaton_df['evaluator'] == 'bit_planes') & 
+                                        (automaton_df['layout'] == 'bit_planes') & 
                                         (automaton_df['precision'] == 64)]
             
             # Extract the values
@@ -71,8 +71,8 @@ def process_data(df):
                 'standard': standard_impl_ns,
                 'bit_array_32': None if bit_array_32.empty else bit_array_32.iloc[0]['average_time_per_cell_ns'],
                 'bit_array_64': None if bit_array_64.empty else bit_array_64.iloc[0]['average_time_per_cell_ns'],
-                'bit_plates_32': None if bit_plates_32.empty else bit_plates_32.iloc[0]['average_time_per_cell_ns'],
-                'bit_plates_64': None if bit_plates_64.empty else bit_plates_64.iloc[0]['average_time_per_cell_ns']
+                'bit_planes_32': None if bit_planes_32.empty else bit_planes_32.iloc[0]['average_time_per_cell_ns'],
+                'bit_planes_64': None if bit_planes_64.empty else bit_planes_64.iloc[0]['average_time_per_cell_ns']
             }
             
             grid_result[automaton] = results
@@ -115,7 +115,7 @@ def display_results(data):
         
         # Column widths
         col_widths = [15, 25, 25, 25, 25, 25, 25]
-        columns = ["Automaton", "True Baseline", "Standard", "Bit Array (32-bit)", "Bit Array (64-bit)", "Bit Plates (32-bit)", "Bit Plates (64-bit)"]
+        columns = ["Automaton", "True Baseline", "Standard", "Bit Array (32-bit)", "Bit Array (64-bit)", "Bit planes (32-bit)", "Bit planes (64-bit)"]
         
         # Print header with yellow color
         header = f"{Colors.YELLOW}{Colors.BOLD}{columns[0]:{col_widths[0]}}"
@@ -141,8 +141,8 @@ def display_results(data):
             # Other implementations compared to true baseline
             bit_array_32_cell = format_cell(results['bit_array_32'], true_baseline)
             bit_array_64_cell = format_cell(results['bit_array_64'], true_baseline)
-            bit_plates_32_cell = format_cell(results['bit_plates_32'], true_baseline)
-            bit_plates_64_cell = format_cell(results['bit_plates_64'], true_baseline)
+            bit_planes_32_cell = format_cell(results['bit_planes_32'], true_baseline)
+            bit_planes_64_cell = format_cell(results['bit_planes_64'], true_baseline)
             
             # Calculate padding for each cell based on visible length
             auto_visible_len = visible_len(automaton_cell)
@@ -160,14 +160,14 @@ def display_results(data):
             bit_array_64_visible_len = visible_len(bit_array_64_cell)
             bit_array_64_padding = ' ' * (col_widths[4] - bit_array_64_visible_len)
             
-            bit_plates_32_visible_len = visible_len(bit_plates_32_cell)
-            bit_plates_32_padding = ' ' * (col_widths[5] - bit_plates_32_visible_len)
+            bit_planes_32_visible_len = visible_len(bit_planes_32_cell)
+            bit_planes_32_padding = ' ' * (col_widths[5] - bit_planes_32_visible_len)
             
-            bit_plates_64_visible_len = visible_len(bit_plates_64_cell)
-            bit_plates_64_padding = ' ' * (col_widths[6] - bit_plates_64_visible_len)
+            bit_planes_64_visible_len = visible_len(bit_planes_64_cell)
+            bit_planes_64_padding = ' ' * (col_widths[6] - bit_planes_64_visible_len)
             
             # Build row with correct spacing
-            row = f"{automaton_cell}{auto_padding}{true_baseline_cell}{baseline_padding}{standard_cell}{standard_padding}{bit_array_32_cell}{bit_array_32_padding}{bit_array_64_cell}{bit_array_64_padding}{bit_plates_32_cell}{bit_plates_32_padding}{bit_plates_64_cell}{bit_plates_64_padding}"
+            row = f"{automaton_cell}{auto_padding}{true_baseline_cell}{baseline_padding}{standard_cell}{standard_padding}{bit_array_32_cell}{bit_array_32_padding}{bit_array_64_cell}{bit_array_64_padding}{bit_planes_32_cell}{bit_planes_32_padding}{bit_planes_64_cell}{bit_planes_64_padding}"
             print(row)
         
         print()

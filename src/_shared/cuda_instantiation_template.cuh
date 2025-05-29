@@ -6,10 +6,10 @@ static_assert(false, "AUTOMATON_NAMESPACE must be defined");
 
 #include "traversers/cuda/simple.hpp"
 #include "evaluators/standard.hpp"
-#include "evaluators/bit_plates.hpp"
+#include "evaluators/bit_planes.hpp"
 #include "evaluators/bit_array.hpp"
 #include "memory/standard_grid.hpp"
-#include "memory/bit_plates_grid.hpp"
+#include "memory/bit_planes_grid.hpp"
 #include "memory/bit_array_grid.hpp"
 #include "memory/interface.hpp"
 
@@ -28,11 +28,11 @@ template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run
 
 #undef TRAVERSER_TYPE
 
-// Bit plates grid with bit plates evaluator (32-bit)
+// Bit planes grid with bit planes evaluator (32-bit)
 #define TRAVERSER_TYPE \
     cellato::traversers::cuda::simple::traverser< \
-        cellato::evaluators::bit_plates::evaluator<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
-        cellato::memory::grids::bit_plates::grid<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
+        cellato::evaluators::bit_planes::evaluator<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
+        cellato::memory::grids::bit_planes::grid<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
     >
 
 template class TRAVERSER_TYPE;
@@ -41,11 +41,11 @@ template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run
 
 #undef TRAVERSER_TYPE
 
-// Bit plates grid with bit plates evaluator (64-bit)
+// Bit planes grid with bit planes evaluator (64-bit)
 #define TRAVERSER_TYPE \
     cellato::traversers::cuda::simple::traverser< \
-        cellato::evaluators::bit_plates::evaluator<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
-        cellato::memory::grids::bit_plates::grid<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
+        cellato::evaluators::bit_planes::evaluator<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
+        cellato::memory::grids::bit_planes::grid<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
     >
 
 template class TRAVERSER_TYPE;
