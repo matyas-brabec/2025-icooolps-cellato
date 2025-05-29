@@ -1,0 +1,5 @@
+# Core data processing and visualization packages
+pandas>=2.0.0
+matplotlib>=3.5.0
+numpy>=1.20.0
+pyarrow>=12.0.0  # For improved pandas performance
