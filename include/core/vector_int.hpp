@@ -1,5 +1,5 @@
-#ifndef CELLIB_CORE_VECTOR_INT_HPP
-#define CELLIB_CORE_VECTOR_INT_HPP
+#ifndef CELLATO_CORE_VECTOR_INT_HPP
+#define CELLATO_CORE_VECTOR_INT_HPP
 
 #include <tuple>
 #include <string>
@@ -23,9 +23,9 @@
 #define CUDA_CALLABLE
 #endif
 
-namespace cellib::core::bitwise {
+namespace cellato::core::bitwise {
 
-using namespace cellib::memory::grids::utils;
+using namespace cellato::memory::grids::utils;
 
 template <typename const_t>
 struct constats_ops {
@@ -699,4 +699,4 @@ struct vector_int_factory {
 
 }
 
-#endif // CELLIB_CORE_VECTOR_INT_HPP
+#endif // CELLATO_CORE_VECTOR_INT_HPP

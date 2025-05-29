@@ -1,5 +1,5 @@
-#ifndef CELLIB_TRAVERSERS_UTILS_HPP
-#define CELLIB_TRAVERSERS_UTILS_HPP
+#ifndef CELLATO_TRAVERSERS_UTILS_HPP
+#define CELLATO_TRAVERSERS_UTILS_HPP
 
 #include <type_traits>
 
@@ -13,7 +13,7 @@
 #endif
 
 
-namespace cellib::traversers::utils {
+namespace cellato::traversers::utils {
 
 template <typename T, typename = void>
 struct has_save_to_method : std::false_type {};
@@ -37,4 +37,4 @@ CUDA_CALLABLE void save_to(grid_data_t grid, std::size_t index, value_t new_valu
 
 }
 
-#endif // CELLIB_TRAVERSERS_UTILS_HPP
+#endif // CELLATO_TRAVERSERS_UTILS_HPP

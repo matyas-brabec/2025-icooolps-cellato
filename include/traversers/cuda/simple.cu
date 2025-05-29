@@ -10,7 +10,7 @@
 #include "../traverser_utils.hpp"
 #include "../cuda_utils.cuh"
 
-namespace cellib::traversers::cuda::simple {
+namespace cellato::traversers::cuda::simple {
 
 template <typename evaluator_t, typename grid_data_t, typename output_data_t>
 __global__ void process_grid_kernel(
@@ -22,7 +22,7 @@ __global__ void process_grid_kernel(
     int x = blockIdx.x * blockDim.x + threadIdx.x + 1;
     int y = blockIdx.y * blockDim.y + threadIdx.y + 1;
     
-    cellib::memory::grids::point_in_grid state(input_data);
+    cellato::memory::grids::point_in_grid state(input_data);
 
     state.properties.x_size = width;
     state.properties.y_size = height;
@@ -85,7 +85,7 @@ auto  traverser<evaluator_type, grid_type>::fetch_result() -> grid_t {
     return cpu_grid;
 }
 
-} // namespace cellib::traversers::cuda::simple
+} // namespace cellato::traversers::cuda::simple
 
 #define SIMPLE_CUDA_TRAVERSER_INSTANTIATIONS
 

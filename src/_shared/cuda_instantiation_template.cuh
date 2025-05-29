@@ -17,40 +17,40 @@ static_assert(false, "AUTOMATON_NAMESPACE must be defined");
 
 // Standard grid with standard evaluator
 #define TRAVERSER_TYPE \
-    cellib::traversers::cuda::simple::traverser< \
-        cellib::evaluators::standard::evaluator<AUTOMATON_NAMESPACE::config::cell_state, AUTOMATON_NAMESPACE::config::algorithm>, \
-        cellib::memory::grids::standard::grid<AUTOMATON_NAMESPACE::config::cell_state, cellib::memory::grids::device::CPU> \
+    cellato::traversers::cuda::simple::traverser< \
+        cellato::evaluators::standard::evaluator<AUTOMATON_NAMESPACE::config::cell_state, AUTOMATON_NAMESPACE::config::algorithm>, \
+        cellato::memory::grids::standard::grid<AUTOMATON_NAMESPACE::config::cell_state, cellato::memory::grids::device::CPU> \
     >
 
 template class TRAVERSER_TYPE;
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::QUIET>(int);
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::VERBOSE>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::QUIET>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::VERBOSE>(int);
 
 #undef TRAVERSER_TYPE
 
 // Bit plates grid with bit plates evaluator (32-bit)
 #define TRAVERSER_TYPE \
-    cellib::traversers::cuda::simple::traverser< \
-        cellib::evaluators::bit_plates::evaluator<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
-        cellib::memory::grids::bit_plates::grid<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellib::memory::grids::device::CPU> \
+    cellato::traversers::cuda::simple::traverser< \
+        cellato::evaluators::bit_plates::evaluator<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
+        cellato::memory::grids::bit_plates::grid<std::uint32_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
     >
 
 template class TRAVERSER_TYPE;
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::QUIET>(int);
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::VERBOSE>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::QUIET>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::VERBOSE>(int);
 
 #undef TRAVERSER_TYPE
 
 // Bit plates grid with bit plates evaluator (64-bit)
 #define TRAVERSER_TYPE \
-    cellib::traversers::cuda::simple::traverser< \
-        cellib::evaluators::bit_plates::evaluator<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
-        cellib::memory::grids::bit_plates::grid<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellib::memory::grids::device::CPU> \
+    cellato::traversers::cuda::simple::traverser< \
+        cellato::evaluators::bit_plates::evaluator<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, AUTOMATON_NAMESPACE::config::algorithm>, \
+        cellato::memory::grids::bit_plates::grid<std::uint64_t, AUTOMATON_NAMESPACE::config::state_dictionary, cellato::memory::grids::device::CPU> \
     >
 
 template class TRAVERSER_TYPE;
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::QUIET>(int);
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_mode::VERBOSE>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::QUIET>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::simple::_run_mode::VERBOSE>(int);
 
 #undef TRAVERSER_TYPE
 
@@ -59,43 +59,43 @@ template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::simple::_run_
 
 
 #define GRID_TYPE \
-    cellib::memory::grids::bit_array::grid< \
+    cellato::memory::grids::bit_array::grid< \
         AUTOMATON_NAMESPACE::config::state_dictionary, \
         std::uint32_t, \
-        cellib::memory::grids::device::CPU \
+        cellato::memory::grids::device::CPU \
     >
 #define TRAVERSER_TYPE \
-    cellib::traversers::cuda::spacial_blocking::traverser< \
-        cellib::evaluators::bit_array::evaluator< \
+    cellato::traversers::cuda::spacial_blocking::traverser< \
+        cellato::evaluators::bit_array::evaluator< \
             GRID_TYPE, AUTOMATON_NAMESPACE::config::algorithm>, \
         GRID_TYPE, \
         1, GRID_TYPE::cells_per_word \
     >
 
 template class TRAVERSER_TYPE;
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::spacial_blocking::_run_mode::QUIET>(int);
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::spacial_blocking::_run_mode::VERBOSE>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::spacial_blocking::_run_mode::QUIET>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::spacial_blocking::_run_mode::VERBOSE>(int);
 
 #undef GRID_TYPE
 #undef TRAVERSER_TYPE
 
 #define GRID_TYPE \
-    cellib::memory::grids::bit_array::grid< \
+    cellato::memory::grids::bit_array::grid< \
         AUTOMATON_NAMESPACE::config::state_dictionary, \
         std::uint64_t, \
-        cellib::memory::grids::device::CPU \
+        cellato::memory::grids::device::CPU \
     >
 #define TRAVERSER_TYPE \
-    cellib::traversers::cuda::spacial_blocking::traverser< \
-        cellib::evaluators::bit_array::evaluator< \
+    cellato::traversers::cuda::spacial_blocking::traverser< \
+        cellato::evaluators::bit_array::evaluator< \
             GRID_TYPE, AUTOMATON_NAMESPACE::config::algorithm>, \
         GRID_TYPE, \
         1, GRID_TYPE::cells_per_word \
     >
 
 template class TRAVERSER_TYPE;
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::spacial_blocking::_run_mode::QUIET>(int);
-template void TRAVERSER_TYPE::run_kernel<cellib::traversers::cuda::spacial_blocking::_run_mode::VERBOSE>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::spacial_blocking::_run_mode::QUIET>(int);
+template void TRAVERSER_TYPE::run_kernel<cellato::traversers::cuda::spacial_blocking::_run_mode::VERBOSE>(int);
 
 #undef GRID_TYPE
 #undef TRAVERSER_TYPE

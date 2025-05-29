@@ -17,7 +17,7 @@ struct runner {
     using value_type = std::uint8_t;
 
     void init(int* grid,
-              const cellib::run::run_params& params) {
+              const cellato::run::run_params& params) {
         // ...
     }
 

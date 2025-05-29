@@ -50,7 +50,7 @@ def main():
     # Set up paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.join(script_dir, "..", "..")
-    executable = os.path.join(project_dir, "bin/cellib_experiments")
+    executable = os.path.join(project_dir, "bin/cellato")
     
     # Check if executable exists
     if not os.path.exists(executable):

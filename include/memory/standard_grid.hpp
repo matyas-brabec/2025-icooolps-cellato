@@ -1,5 +1,5 @@
-#ifndef CELLIB_MEMORY_STANDARD_GRID_HPP
-#define CELLIB_MEMORY_STANDARD_GRID_HPP
+#ifndef CELLATO_MEMORY_STANDARD_GRID_HPP
+#define CELLATO_MEMORY_STANDARD_GRID_HPP
 
 #include <cstddef>
 #include <iostream>
@@ -18,7 +18,7 @@
 
 #include "./interface.hpp"
 
-namespace cellib::memory::grids::standard {
+namespace cellato::memory::grids::standard {
 template <typename cell_type>
 class print_config;
 
@@ -255,4 +255,4 @@ private:
 
 }
 
-#endif // CELLIB_MEMORY_STANDARD_GRID_HPP
+#endif // CELLATO_MEMORY_STANDARD_GRID_HPP

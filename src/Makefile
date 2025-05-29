@@ -6,7 +6,7 @@ NVCC_CC_BIN = $(shell which $(CXX))
 NVCCFLAGS = -std=$(CXX_STD) -I../include -Wno-deprecated-gpu-targets --expt-relaxed-constexpr -ccbin $(NVCC_CC_BIN) -Xcompiler -std=$(CXX_STD) -Xcompiler -Wall -Xcompiler -Wextra -Xcompiler -O3
 CMAKE = cmake
 
-CUDA_VERSION = 12.6
+CUDA_VERSION = 12.8
 
 CUDA_HOME = /usr/local/cuda
 
@@ -17,13 +17,9 @@ LIBS = -lcudart
 KOKKOS_HOME_INCLUDE = $(DEP_DIR)/kokkos-install/include
 KOKKOS_HOME_LIB = $(DEP_DIR)/kokkos-install/lib ${DEP_DIR}/kokkos-install/lib64
 
-HALIDE_HOME_INCLUDE = "/usr/include/halide19"
-HALIDE_HOME_LIB = "/usr/lib/x86_64-linux-gnu/halide19"
-HALIDE_LIBS = -lHalide19
-
-# HALIDE_HOME_INCLUDE = $(DEP_DIR)/halide-install/include
-# HALIDE_HOME_LIB = $(DEP_DIR)/halide-install/lib ${DEP_DIR}/halide-install/lib64
-# HALIDE_LIBS = -lHalide
+HALIDE_HOME_INCLUDE = $(DEP_DIR)/halide-install/include
+HALIDE_HOME_LIB = $(DEP_DIR)/halide-install/lib ${DEP_DIR}/halide-install/lib64
+HALIDE_LIBS = -lHalide
 
 GRIDTOOLS_HOME_INCLUDE = $(DEP_DIR)/gridtools/include
 GRIDTOOLS_HOME_LIB = $(DEP_DIR)/gridtools/lib ${DEP_DIR}/gridtools/lib64

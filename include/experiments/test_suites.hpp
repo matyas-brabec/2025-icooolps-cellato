@@ -1,5 +1,5 @@
-#ifndef CELLIB_TEST_SUITES_HPP
-#define CELLIB_TEST_SUITES_HPP
+#ifndef CELLATO_TEST_SUITES_HPP
+#define CELLATO_TEST_SUITES_HPP
 
 #include "../evaluators/standard.hpp"
 #include "../evaluators/bit_plates.hpp"
@@ -11,17 +11,17 @@
 #include "../traversers/cuda/simple.hpp"
 #include "../traversers/cuda/spacial_blocking.hpp"
 #include "./run_params.hpp"
-namespace cellib::run::test_suites {
+namespace cellato::run::test_suites {
 
-namespace grids = cellib::memory::grids;
-namespace evaluators = cellib::evaluators;
+namespace grids = cellato::memory::grids;
+namespace evaluators = cellato::evaluators;
 
 #define CUDA_OPT "CUDA"
 #define CPU_OPT "CPU"
 
 namespace on_cuda {
     
-    namespace traversers = cellib::traversers::cuda;
+    namespace traversers = cellato::traversers::cuda;
 
     template <typename cellular_automaton>
     struct standard {
@@ -40,7 +40,7 @@ namespace on_cuda {
         constexpr static int x_margin = 1;
         constexpr static int y_margin = 1;
 
-        static bool is_for(cellib::run::run_params& params) {
+        static bool is_for(cellato::run::run_params& params) {
             return params.automaton == cellular_automaton::name &&
                    params.traverser == "simple" &&
                    params.device == CUDA_OPT &&
@@ -65,7 +65,7 @@ namespace on_cuda {
             constexpr static int x_margin = 1;
             constexpr static int y_margin = 1;
 
-            static bool is_for(cellib::run::run_params& params) {
+            static bool is_for(cellato::run::run_params& params) {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "spacial_blocking" &&
                        params.device == CUDA_OPT &&
@@ -99,7 +99,7 @@ namespace on_cuda {
             constexpr static int x_margin = grid_t::cells_per_word;
             constexpr static int y_margin = 1;
 
-            static bool is_for(cellib::run::run_params& params) {
+            static bool is_for(cellato::run::run_params& params) {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CUDA_OPT &&
@@ -127,7 +127,7 @@ namespace on_cuda {
             constexpr static int x_margin = sizeof(grid_store_word_t) * 8;
             constexpr static int y_margin = 1;
 
-            static bool is_for(cellib::run::run_params& params) {
+            static bool is_for(cellato::run::run_params& params) {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CUDA_OPT &&
@@ -141,7 +141,7 @@ namespace on_cuda {
 
 namespace on_cpu {
 
-    namespace traversers = cellib::traversers::cpu;
+    namespace traversers = cellato::traversers::cpu;
 
     template <typename cellular_automaton>
     struct standard {
@@ -160,7 +160,7 @@ namespace on_cpu {
         constexpr static int x_margin = 1;
         constexpr static int y_margin = 1;
 
-        static bool is_for(cellib::run::run_params& params) {
+        static bool is_for(cellato::run::run_params& params) {
             return params.automaton == cellular_automaton::name &&
                    params.traverser == "simple" &&
                    params.device == CPU_OPT &&
@@ -190,7 +190,7 @@ namespace on_cpu {
             constexpr static int x_margin = grid_t::cells_per_word;
             constexpr static int y_margin = 1;
 
-            static bool is_for(cellib::run::run_params& params) {
+            static bool is_for(cellato::run::run_params& params) {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CPU_OPT &&
@@ -218,7 +218,7 @@ namespace on_cpu {
             constexpr static int x_margin = sizeof(grid_store_word_t) * 8;
             constexpr static int y_margin = 1;
 
-            static bool is_for(cellib::run::run_params& params) {
+            static bool is_for(cellato::run::run_params& params) {
                 return params.automaton == cellular_automaton::name &&
                        params.traverser == "simple" &&
                        params.device == CPU_OPT &&
@@ -230,6 +230,6 @@ namespace on_cpu {
     };
 }
 
-} // namespace cellib::run
+} // namespace cellato::run
 
-#endif // CELLIB_TEST_SUITES_HPP
+#endif // CELLATO_TEST_SUITES_HPP

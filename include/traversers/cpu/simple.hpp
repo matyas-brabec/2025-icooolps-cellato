@@ -1,5 +1,5 @@
-#ifndef CELLIB_TRAVERSERS_CPU_SIMPLE_HPP
-#define CELLIB_TRAVERSERS_CPU_SIMPLE_HPP
+#ifndef CELLATO_TRAVERSERS_CPU_SIMPLE_HPP
+#define CELLATO_TRAVERSERS_CPU_SIMPLE_HPP
 
 #include <iostream>
 #include <thread>
@@ -11,9 +11,9 @@
 #include "../traverser_utils.hpp"
 #include "../../experiments/run_params.hpp"
 
-namespace cellib::traversers::cpu::simple {
+namespace cellato::traversers::cpu::simple {
 
-using namespace cellib::traversers::utils;
+using namespace cellato::traversers::utils;
 
 template <
     typename evaluator_type,
@@ -27,7 +27,7 @@ class traverser {
   public:
 
     void init(grid_t grid, 
-              const cellib::run::run_params& params) {
+              const cellato::run::run_params& params) {
         (void)params; // Unused parameter
 
         _input_grid = std::move(grid);
@@ -43,7 +43,7 @@ class traverser {
         auto current = &_input_grid;
         auto next = &_intermediate_grid;
 
-        auto state = cellib::memory::grids::point_in_grid(current->data());
+        auto state = cellato::memory::grids::point_in_grid(current->data());
 
         state.properties.x_size = _input_grid.x_size_physical();
         state.properties.y_size = _input_grid.y_size_physical();
@@ -96,4 +96,4 @@ class traverser {
 
 }
 
-#endif // CELLIB_TRAVERSERS_CPU_SIMPLE_HPP
+#endif // CELLATO_TRAVERSERS_CPU_SIMPLE_HPP

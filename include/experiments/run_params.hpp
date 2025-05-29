@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <iostream>
 
-namespace cellib::run {
+namespace cellato::run {
 
 struct run_params {
     std::string automaton = "game-of-life";

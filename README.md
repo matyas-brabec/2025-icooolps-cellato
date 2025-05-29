@@ -4,9 +4,9 @@
 
 This repository accompanies our paper:
 
-```
+```bibtex
 @article{
-    TODO
+  TODO
 }
 ```
 
@@ -25,7 +25,7 @@ With zero-overhead abstractions powered by template metaprogramming, Cellato let
 
 ## 📂 Repository Structure
 
-```
+```text
 .
 ├── LICENSE
 ├── README.md
@@ -75,7 +75,6 @@ All core headers live in [`include/`](./include/). Key components:
 | **Memory layouts**         | [`include/memory/standard_grid.hpp`](./include/memory/standard_grid.hpp) • [`bit_array_grid.hpp`](include/memory/bit_array_grid.hpp) • [`bit_plates_grid.hpp`](./include/memory/bit_plates_grid.hpp)                          |
 | **Traversors (iteration)** | CPU: [`traversers/cpu/simple.hpp`](./traversers/cpu/simple.hpp)<br>CUDA: `traversers/cuda/simple.{hpp,cu}` [.hpp](./include/traversers/cuda/simple.hpp) [.cu](./include/traversers/cuda/simple.cu), `…/spatial_blocking.{hpp,cu}` [.hpp](./include/traversers/cuda/spatial_blocking.hpp) [.cu](./include/traversers/cuda/spatial_blocking.cu) |
 
-
 ## 📖 Tutorial
 
 ### 🔧 Prerequisites
@@ -87,24 +86,44 @@ All core headers live in [`include/`](./include/). Key components:
 
 ```bash
 # Clone & enter
-git clone https://github.com/matyas-brabec/cellato.git
+git clone (REMOVED TO PRESERVE AUTHOR ANONYMITY REMOVED TO PRESERVE AUTHOR ANONYMITY DURING REVIEW)
 cd cellato
 
-# Build everything
-make
-./bin/cellato <options>
+# Build Cellato and the `baseline` reference implementation
+(cd src && make)
 
-# Or via Make:
-make run ARGS="<options>"
+
+# Run the CLI test harness
+./bin/cellato <options>
 ```
 
-To enable reference back-ends, toggle these `Makefile` flags (default OFF):
+(Optional) To enable more reference implementations, toggle these `Makefile` variables (default OFF):
 
 ```make
-ENABLE_KOKKOS   = OFF
-ENABLE_HALIDE   = OFF
-ENABLE_GRIDTOOLS= OFF
+ENABLE_KOKKOS=ON
+ENABLE_HALIDE=ON
+ENABLE_GRIDTOOLS=ON
 ```
+
+The back-ends require their respective libraries installed. They can be installed into the `_deps` directory via the `src/Makefile` (note that this requires `git` and `cmake`; and it may take a significant amount of time to download and build them):
+
+```bash
+# Download submodules
+git submodule update --init
+
+make install_kokkos
+make install_halide
+make install_gridtools
+```
+
+Alternatively, you can install them system-wide and set the following make variables:
+
+```bash
+# Set paths to the Kokkos library (similarly for Halide and GridTools)
+KOKKOS_HOME_INCLUDE=/opt/kokkos/include
+KOKKOS_HOME_LIB="/opt/kokkos/lib /opt/kokkos/lib64"
+```
+
 ---
 
 ### ▶️ Running Examples
@@ -132,13 +151,14 @@ ENABLE_GRIDTOOLS= OFF
   --steps 1000 \
   --cuda_block_size_x 32 --cuda_block_size_y 8
 
-# Compare against Kokkos reference impl
+# Compare against Kokkos reference impl if it is enabled
 ./bin/cellato \
   --automaton game-of-life \
   --reference_impl kokkos \
   --x_size 2048 --y_size 2048 \
   --steps 1000
 ```
+
 ---
 
 ## ⚙️ CLI Options
@@ -151,7 +171,7 @@ Options:
   --traverser <name>           Traversal strategy (simple, spatial_blocking)
   --evaluator <name>           Evaluator type (standard, bit_array, bit_plates)
   --layout <name>              Memory layout (standard, bit_array, bit_plates)
-  --reference_impl <name>      Run reference implementation (standard, kokkos, halide)
+  --reference_impl <name>      Run reference implementation (baseline, kokkos, halide, gridtools)
   --x_size <N>                 Grid width
   --y_size <N>                 Grid height
   --x_tile_size <N>            CUDA tile size in X (only with spatial_blocking)
@@ -274,10 +294,6 @@ Performance on standard layouts matches handwritten kernels, demonstrating zero-
 * **Framework integration:** embed Cellato evaluators into Kokkos/GridTools
 
 ---
-
-## 📬 Contact
-
-If you have any questions regarding the framework, our implementation, or if you have any suggestions, please feel free to contact us by raising [an issue](https://github.com/matyas-brabec/cellato/issues)!
 
 ## 📝 License
 

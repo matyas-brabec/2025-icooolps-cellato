@@ -14,7 +14,7 @@ struct game_of_life_runner : public real_runner {
     } execution_space = space::CPU;
 
     void init(int* grid,
-              const cellib::run::run_params& params) override {
+              const cellato::run::run_params& params) override {
         // Initialize Kokkos
         kokkos_initialize(params);
 
@@ -88,9 +88,9 @@ struct game_of_life_runner : public real_runner {
     }
 
 private:
-    void kokkos_initialize(const cellib::run::run_params& params) {
+    void kokkos_initialize(const cellato::run::run_params& params) {
         static struct kokkos_init_guard {
-            kokkos_init_guard(const cellib::run::run_params& params, space *space = nullptr) {
+            kokkos_init_guard(const cellato::run::run_params& params, space *space = nullptr) {
                 Kokkos::InitializationSettings init_settings_;
 
                 if (params.device == "CPU") {

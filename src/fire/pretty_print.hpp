@@ -6,7 +6,7 @@
 
 namespace fire {
 
-using print_config = cellib::memory::grids::standard::print_config<fire_cell_state>;
+using print_config = cellato::memory::grids::standard::print_config<fire_cell_state>;
 
 struct fire_pretty_print {
     static print_config get_config() {

@@ -4,7 +4,7 @@
 #include "core/ast.hpp"
 
 namespace wire {
-using namespace cellib::ast;
+using namespace cellato::ast;
 
 // --- States for the Wireworld CA ---
 enum class wire_cell_state { 

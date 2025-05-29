@@ -6,7 +6,7 @@
 
 namespace greenberg {
 
-using print_config = cellib::memory::grids::standard::print_config<ghm_cell_state>;
+using print_config = cellato::memory::grids::standard::print_config<ghm_cell_state>;
 
 struct ghm_pretty_print {
     static print_config get_config() {

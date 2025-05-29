@@ -10,11 +10,11 @@
 namespace game_of_life {
 
 struct gol_random_init {
-    static std::vector<gol_cell_state> init(cellib::run::run_params& params) {
+    static std::vector<gol_cell_state> init(cellato::run::run_params& params) {
 
         std::vector<gol_cell_state> initial_state(params.x_size * params.y_size);
 
-        cellib::memory::grids::utils::generate_random_grid(
+        cellato::memory::grids::utils::generate_random_grid(
             initial_state,
             params.y_size, params.x_size,
             gol_cell_state::alive, 0.2,

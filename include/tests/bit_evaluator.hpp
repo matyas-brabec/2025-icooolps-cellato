@@ -1,5 +1,5 @@
-#ifndef CELLIB_TESTS_BIT_EVALUATOR_HPP
-#define CELLIB_TESTS_BIT_EVALUATOR_HPP
+#ifndef CELLATO_TESTS_BIT_EVALUATOR_HPP
+#define CELLATO_TESTS_BIT_EVALUATOR_HPP
 
 #include "manager.hpp"
 #include "../evaluators/bit_plates.hpp"
@@ -8,7 +8,7 @@
 #include <vector>
 #include <tuple>
 
-namespace cellib::tests {
+namespace cellato::tests {
 
 // Define an enum for testing
 enum class BitEvalTestState {
@@ -18,20 +18,20 @@ enum class BitEvalTestState {
 };
 
 // Define the state dictionary for testing
-using BitEvalTestDict = cellib::memory::grids::state_dictionary<
+using BitEvalTestDict = cellato::memory::grids::state_dictionary<
     BitEvalTestState::DEAD, 
     BitEvalTestState::ALIVE, 
     BitEvalTestState::DYING
 >;
 
 // Create state constants for tests
-using dead = cellib::ast::state_constant<BitEvalTestState::DEAD>;
-using alive = cellib::ast::state_constant<BitEvalTestState::ALIVE>;
-using dying = cellib::ast::state_constant<BitEvalTestState::DYING>;
+using dead = cellato::ast::state_constant<BitEvalTestState::DEAD>;
+using alive = cellato::ast::state_constant<BitEvalTestState::ALIVE>;
+using dying = cellato::ast::state_constant<BitEvalTestState::DYING>;
 
 // Helper for tests to avoid long type names
 template <typename Algorithm>
-using bit_evaluator_t = cellib::evaluators::bit_plates::evaluator<uint8_t, BitEvalTestDict, Algorithm>;
+using bit_evaluator_t = cellato::evaluators::bit_plates::evaluator<uint8_t, BitEvalTestDict, Algorithm>;
 
 class bit_evaluator_test_suite : public test_suite {
 public:
@@ -56,7 +56,7 @@ private:
     void test_neighbor_accessor(test_case& tc) {
         std::cout << BLUE << "\n--- Testing neighbor accessor functionality ---" << RESET << std::endl;
         
-        using namespace cellib::ast;
+        using namespace cellato::ast;
         
         // Define neighbor accessors
         using top_left = neighbor_at<-1, -1>;
@@ -88,7 +88,7 @@ private:
         std::tuple<uint8_t*, uint8_t*> grid = { grid_0th_bit.data(), grid_1st_bit.data() };
         
         // Set up the state for evaluation
-        cellib::memory::grids::point_in_grid<decltype(grid)> state;
+        cellato::memory::grids::point_in_grid<decltype(grid)> state;
         state.grid = grid;
         state.properties.x_size = 3;
         state.properties.y_size = 4;
@@ -121,7 +121,7 @@ private:
     void test_neighborhood_sum(test_case& tc) {
         std::cout << BLUE << "\n--- Testing neighborhood sum functionality ---" << RESET << std::endl;
         
-        using namespace cellib::ast;
+        using namespace cellato::ast;
         
         // Define a sum expression
         using sum = count_neighbors<alive, moore_8_neighbors>;
@@ -145,7 +145,7 @@ private:
         std::tuple<uint8_t*, uint8_t*> grid = { grid_0th_bit.data(), grid_1st_bit.data() };
         
         // Set up the state for evaluation
-        cellib::memory::grids::point_in_grid<decltype(grid)> state;
+        cellato::memory::grids::point_in_grid<decltype(grid)> state;
         state.grid = grid;
         state.properties.x_size = 3;
         state.properties.y_size = 4;
@@ -162,7 +162,7 @@ private:
         
         // Check the type of the result
         tc.assert_true(std::is_same_v<decltype(result), 
-                                      cellib::core::bitwise::vector_int<uint8_t, 4>>, 
+                                      cellato::core::bitwise::vector_int<uint8_t, 4>>, 
                       "Result should be a 4-bit vector_int for Moore-8 neighbors");
     }
 
@@ -170,7 +170,7 @@ private:
     void test_if_then_else(test_case& tc) {
         std::cout << BLUE << "\n--- Testing if-then-else functionality ---" << RESET << std::endl;
         
-        using namespace cellib::ast;
+        using namespace cellato::ast;
         
         // Define expressions for testing
         using current = current_state;
@@ -199,7 +199,7 @@ private:
         std::tuple<uint8_t*, uint8_t*> grid = { grid_0th_bit.data(), grid_1st_bit.data() };
         
         // Set up the state for evaluation
-        cellib::memory::grids::point_in_grid<decltype(grid)> state;
+        cellato::memory::grids::point_in_grid<decltype(grid)> state;
         state.grid = grid;
         state.properties.x_size = 3;
         state.properties.y_size = 4;
@@ -242,6 +242,6 @@ inline void register_bit_evaluator_tests() {
     test_manager::instance().register_suite(&suite);
 }
 
-} // namespace cellib::tests
+} // namespace cellato::tests
 
-#endif // CELLIB_TESTS_BIT_EVALUATOR_HPP
+#endif // CELLATO_TESTS_BIT_EVALUATOR_HPP

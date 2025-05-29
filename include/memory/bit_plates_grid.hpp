@@ -1,5 +1,5 @@
-#ifndef CELLIB_BIT_PLATES_GRID_HPP
-#define CELLIB_BIT_PLATES_GRID_HPP
+#ifndef CELLATO_BIT_PLATES_GRID_HPP
+#define CELLATO_BIT_PLATES_GRID_HPP
 
 #include <tuple>
 #include <vector>
@@ -15,10 +15,10 @@
 #include "standard_grid.hpp"
 #include "grid_utils.hpp"
 
-namespace cellib::memory::grids::bit_plates {
+namespace cellato::memory::grids::bit_plates {
 
-using namespace cellib::memory::grids::utils;
-using namespace cellib::memory::grids;
+using namespace cellato::memory::grids::utils;
+using namespace cellato::memory::grids;
 
 template <typename store_word_type, int needed_bits>
 struct cuda_params {
@@ -31,8 +31,8 @@ template <typename store_word_type, typename states_dict_t, device device_type =
 class grid {
     public:
 
-    friend class cellib::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CPU>;
-    friend class cellib::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CUDA>;
+    friend class cellato::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CPU>;
+    friend class cellato::memory::grids::bit_plates::grid<store_word_type, states_dict_t, device::CUDA>;
 
     constexpr static bool HAS_OWN_PRINT = false;
 
@@ -76,7 +76,7 @@ class grid {
         });
     }
 
-    grid(const cellib::memory::grids::standard::grid<original_state_t>& standard_grid) {
+    grid(const cellato::memory::grids::standard::grid<original_state_t>& standard_grid) {
         static_assert(device_type == device::CPU, "This constructor is only for CPU device");
         initialize_grid(
             standard_grid.y_size_physical(), standard_grid.x_size_physical(),
@@ -127,11 +127,11 @@ class grid {
         return result;
     }
 
-    cellib::memory::grids::standard::grid<original_state_t> to_standard() const {
+    cellato::memory::grids::standard::grid<original_state_t> to_standard() const {
         static_assert(device_type == device::CPU, "to_standard is only supported on CPU");
         
         auto grid_data = to_original_representation();
-        return cellib::memory::grids::standard::grid<original_state_t>(
+        return cellato::memory::grids::standard::grid<original_state_t>(
             std::move(grid_data), x_size_original(), y_size_original()); 
     }
 
@@ -282,4 +282,4 @@ class grid {
 
 }
 
-#endif // CELLIB_BIT_PLATES_GRID_HPP
+#endif // CELLATO_BIT_PLATES_GRID_HPP

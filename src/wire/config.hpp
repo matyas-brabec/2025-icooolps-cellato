@@ -16,7 +16,7 @@ struct config {
     using algorithm = wire_algorithm;
     
     using cell_state = wire_cell_state;
-    using state_dictionary = cellib::memory::grids::state_dictionary<
+    using state_dictionary = cellato::memory::grids::state_dictionary<
         cell_state::empty, cell_state::electron_head,
         cell_state::electron_tail, cell_state::conductor>;
 

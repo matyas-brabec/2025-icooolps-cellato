@@ -1,5 +1,5 @@
-#ifndef CELLIB_BIT_ARRAY_GRID_HPP
-#define CELLIB_BIT_ARRAY_GRID_HPP
+#ifndef CELLATO_BIT_ARRAY_GRID_HPP
+#define CELLATO_BIT_ARRAY_GRID_HPP
 
 #include <vector>
 #include <cstddef>
@@ -15,10 +15,10 @@
 #include "grid_utils.hpp"
 #include "state_dictionary.hpp"
 
-namespace cellib::memory::grids::bit_array {
+namespace cellato::memory::grids::bit_array {
 
-using namespace cellib::memory::grids::utils;
-using namespace cellib::memory::grids;
+using namespace cellato::memory::grids::utils;
+using namespace cellato::memory::grids;
 
 // Define CUDA parameters for bit array grid
 template <typename store_word_type>
@@ -103,8 +103,8 @@ public:
 
     using cell_ptr_t = BitArrayProxy<states_dict_t, store_word_type>;
 
-    friend class cellib::memory::grids::bit_array::grid<states_dict_t, store_word_type, device::CPU>;
-    friend class cellib::memory::grids::bit_array::grid<states_dict_t, store_word_type, device::CUDA>;
+    friend class cellato::memory::grids::bit_array::grid<states_dict_t, store_word_type, device::CPU>;
+    friend class cellato::memory::grids::bit_array::grid<states_dict_t, store_word_type, device::CUDA>;
 
     // Default constructor
     grid() = default;
@@ -142,7 +142,7 @@ public:
     }
 
     // Constructor from standard grid
-    grid(const cellib::memory::grids::standard::grid<original_state_t>& standard_grid) {
+    grid(const cellato::memory::grids::standard::grid<original_state_t>& standard_grid) {
 
         assert_valid_dimensions(standard_grid.x_size_physical(), standard_grid.y_size_physical());
 
@@ -209,11 +209,11 @@ public:
     }
 
     // Convert to standard grid
-    cellib::memory::grids::standard::grid<original_state_t> to_standard() const {
+    cellato::memory::grids::standard::grid<original_state_t> to_standard() const {
         static_assert(device_type == device::CPU, "to_standard is only supported on CPU");
         
         auto grid_data = to_original_representation();
-        return cellib::memory::grids::standard::grid<original_state_t>(
+        return cellato::memory::grids::standard::grid<original_state_t>(
             std::move(grid_data), _x_size, _y_size);
     }
 
@@ -335,6 +335,6 @@ private:
     }
 };
 
-} // namespace cellib::memory::grids::bit_array
+} // namespace cellato::memory::grids::bit_array
 
-#endif // CELLIB_BIT_ARRAY_GRID_HPP
+#endif // CELLATO_BIT_ARRAY_GRID_HPP

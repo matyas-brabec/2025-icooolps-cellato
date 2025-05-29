@@ -1,11 +1,11 @@
-#ifndef CELLIB_MEMORY_STATE_DICTIONARY_HPP
-#define CELLIB_MEMORY_STATE_DICTIONARY_HPP
+#ifndef CELLATO_MEMORY_STATE_DICTIONARY_HPP
+#define CELLATO_MEMORY_STATE_DICTIONARY_HPP
 
 #include <stdexcept>
 #include <tuple>
 #include <type_traits>
 
-namespace cellib::memory::grids {
+namespace cellato::memory::grids {
 
 template <auto... states>
 class state_dictionary {
@@ -47,4 +47,4 @@ private:
 
 }
 
-#endif // CELLIB_MEMORY_STATE_DICTIONARY_HPP
+#endif // CELLATO_MEMORY_STATE_DICTIONARY_HPP

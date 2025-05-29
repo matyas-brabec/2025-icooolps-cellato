@@ -10,7 +10,7 @@
 namespace greenberg {
 
 struct ghm_random_init {
-    static std::vector<ghm_cell_state> init(cellib::run::run_params& params) {
+    static std::vector<ghm_cell_state> init(cellato::run::run_params& params) {
         std::vector<ghm_cell_state> initial_state(params.x_size * params.y_size);
         
         // Create a more sustainable distribution of states:
@@ -28,7 +28,7 @@ struct ghm_random_init {
         };
         
         // Generate random grid using utility
-        cellib::memory::grids::utils::generate_random_grid(
+        cellato::memory::grids::utils::generate_random_grid(
             initial_state,
             params.y_size, params.x_size,
             probabilities,

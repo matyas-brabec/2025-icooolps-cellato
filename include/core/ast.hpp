@@ -1,7 +1,7 @@
-#ifndef CELLIB_AST_HPP
-#define CELLIB_AST_HPP
+#ifndef CELLATO_AST_HPP
+#define CELLATO_AST_HPP
 
-namespace cellib::ast {
+namespace cellato::ast {
 
 template <auto Value>
 struct constant {
@@ -104,4 +104,4 @@ using current_state = neighbor_at<0, 0>;
 
 }
 
-#endif // CELLIB_AST_HPP
+#endif // CELLATO_AST_HPP

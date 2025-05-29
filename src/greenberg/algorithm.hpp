@@ -4,7 +4,7 @@
 #include "core/ast.hpp"
 
 namespace greenberg {
-using namespace cellib::ast;
+using namespace cellato::ast;
 
 // Define 8 states: 0 (quiescent), 1 (excited), 2-7 (refractory)
 enum class ghm_cell_state {

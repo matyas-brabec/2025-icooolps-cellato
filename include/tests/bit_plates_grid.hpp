@@ -1,5 +1,5 @@
-#ifndef CELLIB_TESTS_BIT_PLATES_GRID_HPP
-#define CELLIB_TESTS_BIT_PLATES_GRID_HPP
+#ifndef CELLATO_TESTS_BIT_PLATES_GRID_HPP
+#define CELLATO_TESTS_BIT_PLATES_GRID_HPP
 
 #include "manager.hpp"
 #include "../memory/bit_plates_grid.hpp"
@@ -8,7 +8,7 @@
 #include <random>
 #include <ctime>
 
-namespace cellib::tests {
+namespace cellato::tests {
 // Create a nested namespace for bit_plates tests to avoid conflicts
 namespace bit_plates {
 
@@ -30,7 +30,7 @@ inline std::string to_string(const TestCellState& state) {
 }
 
 // Define the state dictionary for testing
-using TestStateDictionary = cellib::memory::grids::state_dictionary<
+using TestStateDictionary = cellato::memory::grids::state_dictionary<
     TestCellState::DEAD, 
     TestCellState::ALIVE, 
     TestCellState::DYING
@@ -112,7 +112,7 @@ private:
         // Initialize grid with DEAD cells
         std::vector<bit_plates::TestCellState> input_grid(height * width, bit_plates::TestCellState::DEAD);
         
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
 
         tc.assert_equal(width, grid.x_size_original(), "Grid width should match original width");
         tc.assert_equal(height, grid.y_size_original(), "Grid height should match original height");
@@ -131,7 +131,7 @@ private:
             bit_plates::TestCellState::ALIVE, bit_plates::TestCellState::DEAD, bit_plates::TestCellState::ALIVE, bit_plates::TestCellState::DYING
         };
 
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(1, 8, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(1, 8, input_grid.data());
         
         // Reconstruct and verify
         auto result = grid.to_original_representation();
@@ -165,7 +165,7 @@ private:
         input_grid[width + 4] = bit_plates::TestCellState::DYING;
         input_grid[width + 9] = bit_plates::TestCellState::DYING;
         
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
         
         // Verify the reconstruction
         auto result = grid.to_original_representation();
@@ -199,7 +199,7 @@ private:
         input_grid[width + 7] = bit_plates::TestCellState::DYING;         // (7,1)
         input_grid[width + 9] = bit_plates::TestCellState::ALIVE;         // (9,1)
         
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
         
         // Test specific cell retrievals
         tc.assert_true(bit_plates::TestCellState::ALIVE == grid.get_cell(0, 0), "Cell (0,0) should be ALIVE");
@@ -248,7 +248,7 @@ private:
             }
         }
         
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
         
         // Compare direct get_cell with to_original_representation results
         auto result = grid.to_original_representation();
@@ -294,7 +294,7 @@ private:
         }
         
         std::cout << "  Creating bit plates grid..." << std::endl;
-        cellib::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
+        cellato::memory::grids::bit_plates::grid<uint8_t, bit_plates::TestStateDictionary> grid(height, width, input_grid.data());
         
         std::cout << "  Converting back to original representation..." << std::endl;
         auto result = grid.to_original_representation();
@@ -322,6 +322,6 @@ inline void register_bit_plates_grid_tests() {
     test_manager::instance().register_suite(&suite);
 }
 
-} // namespace cellib::tests
+} // namespace cellato::tests
 
-#endif // CELLIB_TESTS_BIT_PLATES_GRID_HPP
+#endif // CELLATO_TESTS_BIT_PLATES_GRID_HPP

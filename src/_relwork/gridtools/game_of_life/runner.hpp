@@ -22,7 +22,7 @@ struct real_runner {
     virtual ~real_runner() = default;
 
     virtual void init(int* grid,
-                  const cellib::run::run_params& params) = 0;
+                  const cellato::run::run_params& params) = 0;
     virtual void run(int steps) = 0;
     virtual std::vector<int> fetch_result() = 0;
 };
@@ -34,7 +34,7 @@ struct runner {
     using value_type = std::uint8_t;
 
     void init(int* grid,
-              const cellib::run::run_params& params) {
+              const cellato::run::run_params& params) {
         if (!real_runner_) {
             if (params.device == "CPU") {
                 real_runner_ = create_CPU_runner();

@@ -7,7 +7,7 @@
 #include "../include/tests/vector-int.hpp"
 #include "../include/tests/bit_evaluator.hpp"
 
-using namespace cellib::tests;
+using namespace cellato::tests;
 
 int main(int argc, char* argv[]) {
     // Register all test suites

@@ -17,7 +17,7 @@ struct config {
     using algorithm = fire_algorithm;
     
     using cell_state = fire_cell_state;
-    using state_dictionary = cellib::memory::grids::state_dictionary<
+    using state_dictionary = cellato::memory::grids::state_dictionary<
         cell_state::empty, cell_state::tree,
         cell_state::fire, cell_state::ash>;
 

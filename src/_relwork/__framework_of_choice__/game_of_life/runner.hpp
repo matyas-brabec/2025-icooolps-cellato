@@ -10,7 +10,7 @@ namespace __framework_of_choice__::game_of_life {
 
 struct runner {
     void init(int* grid,
-              const cellib::run::run_params& params) {
+              const cellato::run::run_params& params) {
         // ...
         (void)grid;
         (void)params;

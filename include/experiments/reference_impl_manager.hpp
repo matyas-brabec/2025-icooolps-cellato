@@ -10,14 +10,14 @@
 #include "./experiment_report.hpp"
 #include "memory/standard_grid.hpp"
 
-namespace cellib::run {
+namespace cellato::run {
 
 template <typename RunnerT, typename CellStateT>
 class reference_impl_manager {
 public:
     using runner_t = RunnerT;
     using cell_state_t = CellStateT;
-    using standard_grid_t = cellib::memory::grids::standard::grid<cell_state_t>;
+    using standard_grid_t = cellato::memory::grids::standard::grid<cell_state_t>;
     
     // Constant margin size for all reference implementations
     constexpr static int margin = 1;
@@ -97,6 +97,6 @@ private:
     }
 };
 
-} // namespace cellib::run
+} // namespace cellato::run
 
 #endif // REFERENCE_IMPL_MANAGER_HPP

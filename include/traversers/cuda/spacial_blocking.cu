@@ -10,7 +10,7 @@
 #include "../traverser_utils.hpp"
 #include "../cuda_utils.cuh"
 
-namespace cellib::traversers::cuda::spacial_blocking {
+namespace cellato::traversers::cuda::spacial_blocking {
 
 template <typename evaluator_t, typename grid_data_t, typename output_data_t, int Y_TILE_SIZE, int X_TILE_SIZE>
 __global__ void process_grid_kernel(
@@ -38,7 +38,7 @@ __global__ void process_grid_kernel(
             if (x <= 0 || x >= width - 1) continue;
             
             // Process this cell
-            cellib::memory::grids::point_in_grid state(input_data);
+            cellato::memory::grids::point_in_grid state(input_data);
             state.properties.x_size = width;
             state.properties.y_size = height;
             state.position.x = x;
@@ -105,7 +105,7 @@ auto traverser<evaluator_type, grid_type, Y_TILE_SIZE, X_TILE_SIZE>::fetch_resul
     return cpu_grid;
 }
 
-} // namespace cellib::traversers::cuda::spacial_blocking
+} // namespace cellato::traversers::cuda::spacial_blocking
 
 
 #define SPACIAL_BLOCKING_CUDA_TRAVERSER_INSTANTIATIONS

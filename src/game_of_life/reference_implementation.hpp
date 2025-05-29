@@ -13,7 +13,7 @@ namespace game_of_life::reference {
 
 struct runner {
     void init(const gol_cell_state* grid,
-              const cellib::run::run_params& params = cellib::run::run_params()) {
+              const cellato::run::run_params& params = cellato::run::run_params()) {
         _x_size = params.x_size;
         _y_size = params.y_size;
         _block_size_x = params.cuda_block_size_x;

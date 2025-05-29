@@ -1,5 +1,5 @@
-#ifndef CELLIB_EVALUATORS_BIT_PLATES_HPP
-#define CELLIB_EVALUATORS_BIT_PLATES_HPP
+#ifndef CELLATO_EVALUATORS_BIT_PLATES_HPP
+#define CELLATO_EVALUATORS_BIT_PLATES_HPP
 
 #include <tuple>
 #include <vector>
@@ -23,11 +23,11 @@
 #define CUDA_CALLABLE
 #endif
 
-namespace cellib::evaluators::bit_plates {
+namespace cellato::evaluators::bit_plates {
 
-using namespace cellib::ast;
-using namespace cellib::core::bitwise;
-using namespace cellib::memory::grids::utils;
+using namespace cellato::ast;
+using namespace cellato::core::bitwise;
+using namespace cellato::memory::grids::utils;
 
 template <typename cell_row_type, typename state_dictionary_type, typename Expression>
 struct evaluator {};
@@ -36,7 +36,7 @@ template <typename cell_row_type, typename state_dictionary_type>
 using grid_cell_data_type = repeated_tuple_t<cell_row_type*, state_dictionary_type::needed_bits>;
 
 template <typename cell_row_type, typename state_dictionary_type>
-using state_t = cellib::memory::grids::point_in_grid<
+using state_t = cellato::memory::grids::point_in_grid<
     grid_cell_data_type<cell_row_type, state_dictionary_type>>;
 
 template <typename cell_row_type, typename state_dictionary_type, auto Value>
@@ -288,6 +288,6 @@ struct evaluator<
     }
 };
 
-} // namespace cellib::evaluators::bit_plates
+} // namespace cellato::evaluators::bit_plates
 
-#endif // CELLIB_EVALUATORS_BIT_PLATES_HPP
+#endif // CELLATO_EVALUATORS_BIT_PLATES_HPP

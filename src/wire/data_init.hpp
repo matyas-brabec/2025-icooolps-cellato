@@ -9,7 +9,7 @@
 namespace wire {
 
 struct wire_random_init {
-    static std::vector<wire_cell_state> init(cellib::run::run_params& params) {
+    static std::vector<wire_cell_state> init(cellato::run::run_params& params) {
         // Initialize all cells to empty
         std::vector<wire_cell_state> initial_state(params.x_size * params.y_size, wire_cell_state::empty);
         

@@ -13,7 +13,7 @@ struct runner_wrapper {
     using cell_state = typename automaton_config::cell_state;
 
     void init(const cell_state* grid,
-              const cellib::run::run_params& params = cellib::run::run_params()) {
+              const cellato::run::run_params& params = cellato::run::run_params()) {
 
         auto x_size = static_cast<std::size_t>(params.x_size);
         auto y_size = static_cast<std::size_t>(params.y_size);

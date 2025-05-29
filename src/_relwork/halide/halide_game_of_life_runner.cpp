@@ -10,7 +10,7 @@ struct game_of_life_runner : public real_runner {
     using value_type = std::uint8_t;
 
     void init(int* in_grid,
-              const cellib::run::run_params& params) override {
+              const cellato::run::run_params& params) override {
         try {
             current_grid = Buffer<value_type>(params.x_size, params.y_size);
             next_grid = Buffer<value_type>(params.x_size, params.y_size);

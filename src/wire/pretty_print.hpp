@@ -6,7 +6,7 @@
 
 namespace wire {
 
-using print_config = cellib::memory::grids::standard::print_config<wire_cell_state>;
+using print_config = cellato::memory::grids::standard::print_config<wire_cell_state>;
 
 struct wire_pretty_print {
     static print_config get_config() {

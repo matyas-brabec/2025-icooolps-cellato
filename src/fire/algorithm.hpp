@@ -4,7 +4,7 @@
 #include "core/ast.hpp"
 
 namespace fire {
-using namespace cellib::ast;
+using namespace cellato::ast;
 
 enum class fire_cell_state {
     empty,

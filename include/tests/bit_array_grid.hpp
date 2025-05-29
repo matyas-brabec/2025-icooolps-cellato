@@ -1,5 +1,5 @@
-#ifndef CELLIB_TESTS_BIT_ARRAY_GRID_HPP
-#define CELLIB_TESTS_BIT_ARRAY_GRID_HPP
+#ifndef CELLATO_TESTS_BIT_ARRAY_GRID_HPP
+#define CELLATO_TESTS_BIT_ARRAY_GRID_HPP
 
 #include "manager.hpp"
 #include "../memory/bit_array_grid.hpp"
@@ -9,7 +9,7 @@
 #include <random>
 #include <ctime>
 
-namespace cellib::tests {
+namespace cellato::tests {
 // Create a nested namespace for bit_array tests to avoid conflicts
 namespace bit_array {
 
@@ -31,7 +31,7 @@ inline std::string to_string(const TestCellState& state) {
 }
 
 // Define the state dictionary for testing
-using TestStateDictionary = cellib::memory::grids::state_dictionary<
+using TestStateDictionary = cellato::memory::grids::state_dictionary<
     TestCellState::DEAD, 
     TestCellState::ALIVE, 
     TestCellState::DYING
@@ -46,7 +46,7 @@ private:
         std::cout << BLUE << "\n--- Testing bit_array_grid construction ---" << RESET << std::endl;
         
         // Modified: Use 16 instead of 20 for x_size to be divisible by cells_per_word
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(10, 16);
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(10, 16);
         tc.assert_equal(size_t{16}, grid.x_size_logical(), "Grid width should be 16");
         tc.assert_equal(size_t{10}, grid.y_size_logical(), "Grid height should be 10");
         
@@ -73,7 +73,7 @@ private:
         init_data[2] = bit_array::TestCellState::DYING;          // (2,0)
         init_data[width + 3] = bit_array::TestCellState::ALIVE;  // (3,1)
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
         
         // Test specific locations
         tc.assert_true(bit_array::TestCellState::ALIVE == grid.get_cell(0, 0), "Cell (0,0) should be ALIVE");
@@ -108,7 +108,7 @@ private:
         const size_t height = 16;
         const size_t width = 32;
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width);
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width);
         
         const size_t expected_x_size = width / cells_per_word;
 
@@ -119,13 +119,13 @@ private:
         
         // Check the bits_per_cell and cells_per_word constants
         tc.assert_equal(bit_array::TestStateDictionary::needed_bits, 
-                      cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::bits_per_cell, 
+                      cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::bits_per_cell, 
                       "bits_per_cell should match state dictionary needed_bits");
         
         // Calculate expected cells per word based on the store_word_type (defaulted to uint32_t)
         const size_t expected_cells_per_word = 32 / bit_array::TestStateDictionary::needed_bits; // 32-bit word / 2 bits per cell = 16 cells
         tc.assert_equal(expected_cells_per_word, 
-                      cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::cells_per_word, 
+                      cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::cells_per_word, 
                       "cells_per_word calculation should be correct");
     }
     
@@ -157,7 +157,7 @@ private:
         init_data[width + 6] = bit_array::TestCellState::DYING;
         init_data[width + 7] = bit_array::TestCellState::DEAD;
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
         
         // Verify original state can be reconstructed
         auto reconstructed = grid.to_original_representation();
@@ -191,7 +191,7 @@ private:
             }
         }
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
         
         // Test retrieving specific cells from each row and different word boundaries
         for (size_t y = 0; y < height; ++y) {
@@ -230,7 +230,7 @@ private:
             }
         }
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> array_grid(height, width, init_data.data());
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> array_grid(height, width, init_data.data());
         
         // Convert to standard grid
         auto standard_grid = array_grid.to_standard();
@@ -268,10 +268,10 @@ private:
         }
         
         // Create standard grid first
-        cellib::memory::grids::standard::grid<bit_array::TestCellState> standard_grid(std::move(init_data), width, height);
+        cellato::memory::grids::standard::grid<bit_array::TestCellState> standard_grid(std::move(init_data), width, height);
         
         // Create bit array grid from standard grid
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> array_grid(standard_grid);
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> array_grid(standard_grid);
         
         // Check dimensions
         tc.assert_equal(width, array_grid.x_size_logical(), "Bit array grid width should match original");
@@ -311,7 +311,7 @@ private:
             }
         }
         
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width, init_data.data());
         
         // Verify using to_original_representation
         auto reconstructed = grid.to_original_representation();
@@ -351,7 +351,7 @@ private:
         std::cout << GREEN << "  " << efficiency_msg << RESET << std::endl;
         
         // Create bit array grid
-        cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width);
+        cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary> grid(height, width);
         
         // Verify memory efficiency is as expected
         tc.assert_true(expected_bytes < height * width * sizeof(bit_array::TestCellState),
@@ -360,7 +360,7 @@ private:
         // Verify formulas are consistent
         const size_t expected_cells_per_word = (sizeof(uint32_t) * 8) / bits_per_cell;
         tc.assert_equal(expected_cells_per_word, 
-                      cellib::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::cells_per_word,
+                      cellato::memory::grids::bit_array::grid<bit_array::TestStateDictionary>::cells_per_word,
                       "cells_per_word calculation matches expected value");
     }
 
@@ -394,6 +394,6 @@ inline void register_bit_array_grid_tests() {
     test_manager::instance().register_suite(&suite);
 }
 
-} // namespace cellib::tests
+} // namespace cellato::tests
 
-#endif // CELLIB_TESTS_BIT_ARRAY_GRID_HPP
+#endif // CELLATO_TESTS_BIT_ARRAY_GRID_HPP

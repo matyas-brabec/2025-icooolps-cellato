@@ -8,14 +8,14 @@
 #include "./run_params.hpp"
 #include "./experiment_report.hpp"
 
-namespace cellib::run {
+namespace cellato::run {
 
 #define LOG std::cerr
 
-using namespace cellib::memory::grids;
+using namespace cellato::memory::grids;
 
 template <typename cell_t>
-using print_config = cellib::memory::grids::standard::print_config<cell_t>;
+using print_config = cellato::memory::grids::standard::print_config<cell_t>;
 
 template <typename test_suite>
 class experiment_manager {
@@ -26,9 +26,9 @@ public:
 
     using grid_t = typename test_suite::grid_t;
     using traverser_t = typename test_suite::traverser_t;
-    using run_params = cellib::run::run_params;
+    using run_params = cellato::run::run_params;
 
-    using standard_grid_t = cellib::memory::grids::standard::grid<original_cell_t>;
+    using standard_grid_t = cellato::memory::grids::standard::grid<original_cell_t>;
 
     experiment_manager() = default;
 
@@ -117,7 +117,7 @@ public:
     }
 
     traverser_t get_initialized_traverser(grid_t& grid, 
-                                          const cellib::run::run_params& params) {
+                                          const cellato::run::run_params& params) {
         traverser_t traverser;
         traverser.init(grid, params);
         return traverser;

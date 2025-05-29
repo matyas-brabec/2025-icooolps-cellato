@@ -52,7 +52,7 @@
 
 template <typename... all_test_suites>
 struct switch_ {
-    static void run(cellib::run::run_params& params) {
+    static void run(cellato::run::run_params& params) {
         // If reference implementation is requested, handle it separately
         if (params.reference_impl != "none") {
             bool ref_executed = run_reference_impl(params);
@@ -69,7 +69,7 @@ struct switch_ {
     }
 
 private:
-    static bool run_reference_impl(cellib::run::run_params& params) {
+    static bool run_reference_impl(cellato::run::run_params& params) {
 
         if (params.reference_impl == "baseline") {
             if (params.automaton == "game-of-life") {
@@ -153,7 +153,7 @@ private:
     }
 
     template <typename automaton_config, typename relwork_runner>
-    static bool run_relwork(cellib::run::run_params& params) {
+    static bool run_relwork(cellato::run::run_params& params) {
         return run_reference_for_automaton<
             automaton_config,
             relwork::runner_wrapper<
@@ -163,14 +163,14 @@ private:
 
     template <typename automaton_config,
               typename runner_t = typename automaton_config::reference_implementation>
-    static bool run_reference_for_automaton(cellib::run::run_params& params) {
+    static bool run_reference_for_automaton(cellato::run::run_params& params) {
         using cell_state_t = typename automaton_config::cell_state;
         
         // Generate initial state using the automaton's random initializer
         auto initial_state = automaton_config::input::random::init(params);
         
         // Run the reference implementation
-        cellib::run::reference_impl_manager<runner_t, cell_state_t> manager;
+        cellato::run::reference_impl_manager<runner_t, cell_state_t> manager;
         auto report = manager.run_experiment(params, initial_state);
         
         REPORT << report.csv_line() << std::endl;
@@ -180,7 +180,7 @@ private:
     }
 
     template <typename test_suite>
-    static bool call(cellib::run::run_params& params) {
+    static bool call(cellato::run::run_params& params) {
         if (!test_suite::is_for(params)) {
             return false;
         }
@@ -189,7 +189,7 @@ private:
 
         auto initial_state = cellular_automaton::input::random::init(params);
 
-        cellib::run::experiment_manager<test_suite> manager;
+        cellato::run::experiment_manager<test_suite> manager;
         manager.set_print_config(cellular_automaton::pretty_print::get_config());
 
         auto report = manager.run_experiment(
@@ -206,19 +206,19 @@ private:
 
 
 template <typename test_suite>
-void run(cellib::run::run_params& params) {
+void run(cellato::run::run_params& params) {
 
 }
 
-cellib::run::run_params get_params(int argc, char* argv[]) {
+cellato::run::run_params get_params(int argc, char* argv[]) {
     input::parser parser {argc, argv};
 
     if (parser.exists("help")) {
-        return cellib::run::run_params{.help = true};
+        return cellato::run::run_params{.help = true};
     }
 
     if (parser.exists("print_csv_header")) {
-        return cellib::run::run_params{.print_csv_header = true};
+        return cellato::run::run_params{.print_csv_header = true};
     }
 
     std::vector<std::string> required {
@@ -257,7 +257,7 @@ cellib::run::run_params get_params(int argc, char* argv[]) {
         }
     }
 
-    cellib::run::run_params params {
+    cellato::run::run_params params {
         .automaton = parser.get("automaton"),
 
         .device = parser.get("device"),
@@ -293,14 +293,14 @@ cellib::run::run_params get_params(int argc, char* argv[]) {
 }
 
 void print_usage() {
-    std::cout << "Usage: ./cellib [options]\n";
+    std::cout << "Usage: ./cellato [options]\n";
     std::cout << "Options:\n";
     std::cout << "  --automaton <name>           Name of the cellular automaton\n";
     std::cout << "  --device <name>              Device to run on (CPU, CUDA)\n";
     std::cout << "  --traverser <name>           Traverser type (simple, spacial_blocking)\n";
     std::cout << "  --evaluator <name>           Evaluator type (standard, bit_plates)\n";
     std::cout << "  --layout <name>              Layout type (standard, bit_array, bit_plates)\n";
-    std::cout << "  --reference_impl <name>      Reference implementation to use (standard, an5d, kokkos, halide)\n";
+    std::cout << "  --reference_impl <name>      Reference implementation to use (baseline, kokkos, halide, gridtools)\n";
     std::cout << "  --x_size <number>            X size of the grid\n";
     std::cout << "  --y_size <number>            Y size of the grid\n";
     std::cout << "  --x_tile_size <number>       X tile size for CUDA\n";
@@ -329,7 +329,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (params.print_csv_header) {
-        std::cout << cellib::run::experiment_report::csv_header() << std::endl;
+        std::cout << cellato::run::experiment_report::csv_header() << std::endl;
         return 0;
     }
 
@@ -337,7 +337,7 @@ int main(int argc, char* argv[]) {
         params.print_std();
     }
 
-    namespace test = cellib::run::test_suites;
+    namespace test = cellato::run::test_suites;
 
     using _game_of_life_ = game_of_life::config;
     using _fire_ = fire::config;

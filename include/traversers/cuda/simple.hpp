@@ -1,5 +1,5 @@
-#ifndef CELLIB_TRAVERSERS_CUDA_SIMPLE_HPP
-#define CELLIB_TRAVERSERS_CUDA_SIMPLE_HPP
+#ifndef CELLATO_TRAVERSERS_CUDA_SIMPLE_HPP
+#define CELLATO_TRAVERSERS_CUDA_SIMPLE_HPP
 
 #include <iostream>
 #include <utility>
@@ -11,9 +11,9 @@
 #include "../../experiments/run_params.hpp"
 #include "../traverser_utils.hpp"
 
-namespace cellib::traversers::cuda::simple {
+namespace cellato::traversers::cuda::simple {
 
-using namespace cellib::traversers::utils;
+using namespace cellato::traversers::utils;
 
 enum class _run_mode {
     QUIET,
@@ -33,7 +33,7 @@ class traverser {
     traverser() : _final_grid(nullptr) {}
 
     void init(grid_t grid, 
-              const cellib::run::run_params& params) {
+              const cellato::run::run_params& params) {
 
         _block_size_x = params.cuda_block_size_x;
         _block_size_y = params.cuda_block_size_y;
@@ -101,6 +101,6 @@ private:
     }
 };
 
-} // namespace cellib::traversers::cuda::simple
+} // namespace cellato::traversers::cuda::simple
 
-#endif // CELLIB_TRAVERSERS_CUDA_SIMPLE_HPP
+#endif // CELLATO_TRAVERSERS_CUDA_SIMPLE_HPP

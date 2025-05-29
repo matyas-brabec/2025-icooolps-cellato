@@ -1,5 +1,5 @@
-#ifndef CELLIB_BIT_ARRAY_EVALUATORS_HPP
-#define CELLIB_BIT_ARRAY_EVALUATORS_HPP
+#ifndef CELLATO_BIT_ARRAY_EVALUATORS_HPP
+#define CELLATO_BIT_ARRAY_EVALUATORS_HPP
 
 #include "../core/ast.hpp"
 #include "../memory/interface.hpp"
@@ -11,10 +11,10 @@
 #define CUDA_CALLABLE
 #endif
 
-namespace cellib::evaluators::bit_array {
+namespace cellato::evaluators::bit_array {
 
-using namespace cellib::ast;
-using namespace cellib::memory;
+using namespace cellato::ast;
+using namespace cellato::memory;
 
 template <typename grid_t>
 using state_t = grids::point_in_grid<typename grid_t::cell_ptr_t>;
@@ -202,6 +202,6 @@ struct _impl_evaluator<grid_t, count_neighbors<CellStateValue, von_neumann_4_nei
     }
 };
 
-} // namespace cellib::evaluators::bit_array
+} // namespace cellato::evaluators::bit_array
 
-#endif // CELLIB_BIT_ARRAY_EVALUATORS_HPP
+#endif // CELLATO_BIT_ARRAY_EVALUATORS_HPP

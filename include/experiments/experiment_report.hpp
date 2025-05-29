@@ -1,5 +1,5 @@
-#ifndef CELLIB_EXPERIMENT_REPORT_HPP
-#define CELLIB_EXPERIMENT_REPORT_HPP
+#ifndef CELLATO_EXPERIMENT_REPORT_HPP
+#define CELLATO_EXPERIMENT_REPORT_HPP
 
 #include "./run_params.hpp"
 #include <vector>
@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cmath>
 
-namespace cellib::run {
+namespace cellato::run {
 
 struct experiment_report {
     run_params params;
@@ -129,4 +129,4 @@ struct experiment_report {
 
 }
 
-#endif // CELLIB_EXPERIMENT_REPORT_HPP
+#endif // CELLATO_EXPERIMENT_REPORT_HPP

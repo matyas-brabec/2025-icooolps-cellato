@@ -1,11 +1,11 @@
-#ifndef CELLIB_TESTS_VECTOR_INT_HPP
-#define CELLIB_TESTS_VECTOR_INT_HPP
+#ifndef CELLATO_TESTS_VECTOR_INT_HPP
+#define CELLATO_TESTS_VECTOR_INT_HPP
 
 #include "manager.hpp"
 #include "../core/vector_int.hpp"
 #include <random>
 
-namespace cellib::tests {
+namespace cellato::tests {
 
 class vector_int_test_suite : public test_suite {
 public:
@@ -40,7 +40,7 @@ private:
         std::cout << BLUE << "\n--- Testing vector_int basics ---" << RESET << std::endl;
         
         // Create a vector_int with 3 bits of precision
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v;
         
         // Test setting and getting values
@@ -78,7 +78,7 @@ private:
     void test_binary_operations(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int binary operations ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v1, v2;
         
         // Set up test values
@@ -128,9 +128,9 @@ private:
         std::cout << BLUE << "\n--- Testing vector_int mixed precision operations ---" << RESET << std::endl;
         
         // Define vectors with different bit precisions
-        using vint_small = cellib::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision
-        using vint_medium = cellib::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision
-        using vint_large = cellib::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision
+        using vint_small = cellato::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision
+        using vint_medium = cellato::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision
+        using vint_large = cellato::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision
         
         // Create instances
         vint_small small;
@@ -177,7 +177,7 @@ private:
     void test_shifts(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int shift operations ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v;
         
         // Set up test values - fill with a pattern
@@ -209,7 +209,7 @@ private:
     void test_not(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int NOT operation ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v;
         
         // Set alternating pattern of 0s and 1s
@@ -229,7 +229,7 @@ private:
     void test_constant_operations(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int constant operations ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v;
         
         // Fill with consecutive values
@@ -262,7 +262,7 @@ private:
     void test_load_from(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int load_from ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         
         // Create storage vectors with test data
         std::vector<uint8_t> b0 = {0xF0, 0xAA, 0x00, 0x00};  // 11110000, 10101010
@@ -300,7 +300,7 @@ private:
     void test_equals_to(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int equals_to ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v1, v2, v3;
         
         // Set up test values
@@ -347,7 +347,7 @@ private:
         
         // Test with same bit-width vectors
         {
-            using vint3 = cellib::core::bitwise::vector_int<uint8_t, 3>;
+            using vint3 = cellato::core::bitwise::vector_int<uint8_t, 3>;
             vint3 v1, v2;
             
             // Simple case: v1 > v2
@@ -384,9 +384,9 @@ private:
         
         // Test with different bit-width vectors
         {
-            using vint_small = cellib::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision (0-3)
-            using vint_medium = cellib::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision (0-7)
-            using vint_large = cellib::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision (0-15)
+            using vint_small = cellato::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision (0-3)
+            using vint_medium = cellato::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision (0-7)
+            using vint_large = cellato::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision (0-15)
             
             // Create instances
             vint_small small;
@@ -426,7 +426,7 @@ private:
         
         // Test with multi-element vectors (multiple indices)
         {
-            using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+            using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
             vint v1, v2;
             
             // Set up different values at different indices
@@ -461,8 +461,8 @@ private:
             std::cout << "  Running random greater_than tests..." << std::endl;
             std::srand(42);  // Set random seed for reproducibility
             
-            using vint_small = cellib::core::bitwise::vector_int<uint8_t, 2>;
-            using vint_medium = cellib::core::bitwise::vector_int<uint8_t, 3>;
+            using vint_small = cellato::core::bitwise::vector_int<uint8_t, 2>;
+            using vint_medium = cellato::core::bitwise::vector_int<uint8_t, 3>;
             
             const int num_tests = 20;
             
@@ -505,9 +505,9 @@ private:
         std::srand(42);
         
         // Define vectors with different bit precisions
-        using vint_small = cellib::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision (0-3)
-        using vint_medium = cellib::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision (0-7)
-        using vint_large = cellib::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision (0-15)
+        using vint_small = cellato::core::bitwise::vector_int<uint8_t, 2>;  // 2-bit precision (0-3)
+        using vint_medium = cellato::core::bitwise::vector_int<uint8_t, 3>; // 3-bit precision (0-7)
+        using vint_large = cellato::core::bitwise::vector_int<uint8_t, 4>;  // 4-bit precision (0-15)
         
         const int num_iterations = 100; // Reduced for faster tests
         const int max_idx = 7; // Test up to 8 cells
@@ -565,7 +565,7 @@ private:
     void test_factory_from_constant(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int_factory from_constant ---" << RESET << std::endl;
         
-        using namespace cellib::core::bitwise;
+        using namespace cellato::core::bitwise;
         
         // Test with constant 0 (should create a vector with all zeros)
         auto zero_vector = vector_int_factory::from_constant<uint8_t, 0>();
@@ -602,7 +602,7 @@ private:
     void test_mask_out_columns(test_case& tc) {
         std::cout << BLUE << "\n--- Testing vector_int mask_out_columns ---" << RESET << std::endl;
         
-        using vint = cellib::core::bitwise::vector_int<uint8_t, 3>;
+        using vint = cellato::core::bitwise::vector_int<uint8_t, 3>;
         vint v;
         
         // Fill with known pattern
@@ -652,6 +652,6 @@ inline void register_vector_int_tests() {
     test_manager::instance().register_suite(&suite);
 }
 
-} // namespace cellib::tests
+} // namespace cellato::tests
 
-#endif // CELLIB_TESTS_VECTOR_INT_HPP
+#endif // CELLATO_TESTS_VECTOR_INT_HPP

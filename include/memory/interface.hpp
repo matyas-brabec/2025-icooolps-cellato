@@ -1,5 +1,5 @@
-#ifndef CELLIB_MEMORY_INTERFACE_HPP
-#define CELLIB_MEMORY_INTERFACE_HPP
+#ifndef CELLATO_MEMORY_INTERFACE_HPP
+#define CELLATO_MEMORY_INTERFACE_HPP
 
 #ifndef CUDA_CALLABLE
 #ifdef __CUDACC__
@@ -9,7 +9,7 @@
 #endif
 #endif
 
-namespace cellib::memory::grids {
+namespace cellato::memory::grids {
 
 enum class device {
     CPU,
@@ -50,4 +50,4 @@ struct point_in_grid {
 
 }
 
-#endif // CELLIB_MEMORY_INTERFACE_HPP
+#endif // CELLATO_MEMORY_INTERFACE_HPP

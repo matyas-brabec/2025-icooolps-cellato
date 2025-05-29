@@ -1,5 +1,5 @@
-#ifndef CELLIB_STANDARD_EVALUATORS_HPP
-#define CELLIB_STANDARD_EVALUATORS_HPP
+#ifndef CELLATO_STANDARD_EVALUATORS_HPP
+#define CELLATO_STANDARD_EVALUATORS_HPP
 
 #include <cstddef>
 
@@ -14,10 +14,10 @@
 #define CUDA_CALLABLE
 #endif
 
-namespace cellib::evaluators::standard {
+namespace cellato::evaluators::standard {
 
-using namespace cellib::ast;
-using namespace cellib::memory;
+using namespace cellato::ast;
+using namespace cellato::memory;
 
 template <typename cell_type, typename Expression, typename cell_ptr_type = cell_type*>
 struct evaluator {};
@@ -148,6 +148,6 @@ struct evaluator<cell_type,
     }
 };
 
-} // namespace cellib::evaluators::standard
+} // namespace cellato::evaluators::standard
 
-#endif // CELLIB_STANDARD_EVALUATORS_HPP
+#endif // CELLATO_STANDARD_EVALUATORS_HPP

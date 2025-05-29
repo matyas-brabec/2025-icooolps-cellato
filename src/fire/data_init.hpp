@@ -9,7 +9,7 @@
 namespace fire {
 
 struct fire_random_init {
-    static std::vector<fire_cell_state> init(cellib::run::run_params& params) {
+    static std::vector<fire_cell_state> init(cellato::run::run_params& params) {
         std::vector<fire_cell_state> initial_state(params.x_size * params.y_size);
         
         // Probabilities for each cell state
@@ -21,7 +21,7 @@ struct fire_random_init {
         };
         
         // Generate random grid using utility
-        cellib::memory::grids::utils::generate_random_grid(
+        cellato::memory::grids::utils::generate_random_grid(
             initial_state,
             params.y_size, params.x_size,
             probabilities

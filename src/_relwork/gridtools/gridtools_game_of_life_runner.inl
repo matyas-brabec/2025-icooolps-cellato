@@ -86,7 +86,7 @@ private:
     static constexpr int halo = 1;  // one-cell border (dead boundary)
 
 public:
-    void init(int* grid, const cellib::run::run_params& params) override {
+    void init(int* grid, const cellato::run::run_params& params) override {
         Nx = params.x_size;
         Ny = params.y_size;
         // Build storages with given dimensions and halo size

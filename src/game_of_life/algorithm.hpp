@@ -4,7 +4,7 @@
 #include "core/ast.hpp"
 
 namespace game_of_life {
-using namespace cellib::ast;
+using namespace cellato::ast;
 
 enum class gol_cell_state {
     dead,

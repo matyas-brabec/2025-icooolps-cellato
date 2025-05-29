@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cmath>   // For abs function
 
-namespace cellib::memory::grids::utils {
+namespace cellato::memory::grids::utils {
 
 // Generate a random grid with specified distribution of cell states
 // Each tuple in probabilities contains (state, probability)

@@ -1,5 +1,5 @@
-#ifndef CELLIB_TESTS_MANAGER_HPP
-#define CELLIB_TESTS_MANAGER_HPP
+#ifndef CELLATO_TESTS_MANAGER_HPP
+#define CELLATO_TESTS_MANAGER_HPP
 
 #include <iostream>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <functional>
 #include <unordered_map>
 
-namespace cellib::tests {
+namespace cellato::tests {
 
 // ANSI color codes for terminal output
 const std::string RESET = "\033[0m";
@@ -187,6 +187,6 @@ private:
     }
 };
 
-} // namespace cellib::tests
+} // namespace cellato::tests
 
-#endif // CELLIB_TESTS_MANAGER_HPP
+#endif // CELLATO_TESTS_MANAGER_HPP
