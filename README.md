@@ -17,7 +17,7 @@ Cellular automata (CA) are versatile models used across physics, biology, comput
 1. **Algorithm** (rule definition)
 2. **Evaluator** (how each cell is updated)
 3. **Layout** (memory representation)
-4. **Traversor** (iteration strategy)
+4. **Traverser** (iteration strategy)
 
 With zero-overhead abstractions powered by template metaprogramming, Cellato lets you swap in different layouts (standard arrays, bit-packed arrays, bit-plates) and execution back-ends (CPU, CUDA) without touching your rule code.
 
@@ -73,7 +73,7 @@ All core headers live in [`include/`](./include/). Key components:
 | **AST nodes**              | [`include/core/ast.hpp`](./include/core/ast.hpp)                                                                                     |
 | **Evaluators**             | [`include/evaluators/standard.hpp`](./include/evaluators/standard.hpp) • [`bit_array.hpp`](./include/evaluators/bit_array.hpp) • [`bit_plates.hpp`](./include/evaluators/bit_plates.hpp)                                    |
 | **Memory layouts**         | [`include/memory/standard_grid.hpp`](./include/memory/standard_grid.hpp) • [`bit_array_grid.hpp`](include/memory/bit_array_grid.hpp) • [`bit_plates_grid.hpp`](./include/memory/bit_plates_grid.hpp)                          |
-| **Traversors (iteration)** | CPU: [`traversers/cpu/simple.hpp`](./traversers/cpu/simple.hpp)<br>CUDA: `traversers/cuda/simple.{hpp,cu}` [.hpp](./include/traversers/cuda/simple.hpp) [.cu](./include/traversers/cuda/simple.cu), `…/spatial_blocking.{hpp,cu}` [.hpp](./include/traversers/cuda/spatial_blocking.hpp) [.cu](./include/traversers/cuda/spatial_blocking.cu) |
+| **Traversers (iteration)** | CPU: [`traversers/cpu/simple.hpp`](./traversers/cpu/simple.hpp)<br>CUDA: `traversers/cuda/simple.{hpp,cu}` [.hpp](./include/traversers/cuda/simple.hpp) [.cu](./include/traversers/cuda/simple.cu), `…/spatial_blocking.{hpp,cu}` [.hpp](./include/traversers/cuda/spatial_blocking.hpp) [.cu](./include/traversers/cuda/spatial_blocking.cu) |
 
 ## 📖 Tutorial
 
@@ -304,8 +304,8 @@ Performance on standard layouts matches handwritten kernels, demonstrating zero-
 * **Higher-dimensional grids:** 3D+ support
 * **Non-rectangular topologies:** hexagonal, triangular
 * **Probabilistic CAs:** introduce random-node AST types
-* **Advanced traversors:** temporal blocking, NUMA-aware scheduling
-* **Distributed execution:** MPI-based traversor with halo exchange
+* **Advanced traversers:** temporal blocking, NUMA-aware scheduling
+* **Distributed execution:** MPI-based traverser with halo exchange
 * **Framework integration:** embed Cellato evaluators into Kokkos/GridTools
 
 ---
