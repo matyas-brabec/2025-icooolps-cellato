@@ -105,7 +105,7 @@ ENABLE_HALIDE=ON
 ENABLE_GRIDTOOLS=ON
 ```
 
-The back-ends require their respective libraries installed. They can be installed into the `_deps` directory via the `src/Makefile` (note that this requires `git` and `cmake`; and it may take a significant amount of time to download and build them):
+The implementations require their respective libraries installed. They can be installed into the `_deps` directory via the `src/Makefile` (note that this requires `git` and `cmake`; and it may take a significant amount of time to download and build them):
 
 ```bash
 # Download submodules
@@ -192,6 +192,21 @@ Options:
 
 We support three memory layouts, each with its matching evaluator. All can be run with the simple traverser. For the bit_array and bit_plates options, you must specify `--precision`.
 
+Example:
+
+```bash
+./bin/cellato \
+  --automaton game-of-life \
+  --device CPU \
+  --traverser simple \
+  --evaluator standard \
+  --layout standard \
+  --x_size 256 --y_size 256 \
+  --steps 100
+```
+
+Examples for each combination:
+
 ```bash
 # ▶️ Standard layout + evaluator
 ./bin/cellato \
@@ -228,7 +243,7 @@ Reproduce paper results via scripts in `src/_scripts/`:
 # Generate raw CSV data
 python src/_scripts/baseline_vs_standard.py > results.csv
 
-# Plot comparison (requires pandas, matplotlib)
+# Plot comparison (requires pandas, matplotlib, numpy)
 python src/_scripts/plot_baseline_vs_standard.py results.csv
 ```
 
