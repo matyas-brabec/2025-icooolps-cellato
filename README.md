@@ -1,12 +1,23 @@
 # Cellato: A DSL for Cellular Automata 🧬🔍
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![doi](https://img.shields.io/badge/DOI-TODO-blue)](https://doi.org/TODO)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![doi](https://img.shields.io/badge/DOI-10.5381/jot.2026.25.1.a13-blue)](https://doi.org/10.5381/jot.2026.25.1.a13)
 
 This repository accompanies our paper:
 
 ```bibtex
 @article{
-  TODO
+  title = {Cellato: a DSL for Cellular Automata based on C++ Template Meta-programming},
+  author = {Matyáš Brabec and Jiří Klepl and Martin Kruliš},
+  journal = {Journal of Object Technology},
+  volume = {25},
+  number = {1},
+  issn = {1660-1769},
+  year = {2026},
+  month = mar,
+  pages = {1:1-13},
+  doi = {10.5381/jot.2026.25.1.a13},
+  url = {https://www.jot.fm/contents/issue_2026_01/a13.html},
+  note = {ECOOP 2025 Workshops}
 }
 ```
 
@@ -86,7 +97,7 @@ All core headers live in [`include/`](./include/). Key components:
 
 ```bash
 # Clone & enter
-git clone (REMOVED TO PRESERVE AUTHOR ANONYMITY REMOVED TO PRESERVE AUTHOR ANONYMITY DURING REVIEW)
+git clone https://github.com/matyas-brabec/2025-icooolps-cellato.git
 cd cellato
 
 # Build Cellato and the `baseline` reference implementation
