@@ -5,7 +5,7 @@
 This repository accompanies our paper:
 
 ```bibtex
-@article{
+@article{brabec2026cellato,
   title = {Cellato: a DSL for Cellular Automata based on C++ Template Meta-programming},
   author = {Matyáš Brabec and Jiří Klepl and Martin Kruliš},
   journal = {Journal of Object Technology},
