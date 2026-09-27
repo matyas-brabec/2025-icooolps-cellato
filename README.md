@@ -21,7 +21,7 @@ This repository accompanies our paper:
 }
 ```
 
-For a ready-to-use implementation of the paper's methods, please refer to [Cellato](https://github.com/ParaCoToUl/cellato). The Cellato repository contains the core library with more detailed documentation and usage examples. This repository focuses on the specific implementations and benchmarks presented in the paper.
+⚠️ For a ready-to-use implementation of the paper's methods, please refer to [Cellato](https://github.com/ParaCoToUl/cellato). The Cellato repository contains the core library with more detailed documentation and usage examples. This repository focuses on the specific implementations and benchmarks presented in the paper.
 
 ## 🚀 Overview
 
