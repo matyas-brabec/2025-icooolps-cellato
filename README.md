@@ -21,6 +21,8 @@ This repository accompanies our paper:
 }
 ```
 
+For a ready-to-use implementation of the paper's methods, please refer to [Cellato](https://github.com/ParaCoToUl/cellato). The Cellato repository contains the core library with more detailed documentation and usage examples. This repository focuses on the specific implementations and benchmarks presented in the paper.
+
 ## 🚀 Overview
 
 Cellular automata (CA) are versatile models used across physics, biology, computer science, and environmental science. Unfortunately, most implementations conflate the **rule logic**, **evaluation strategy**, and **memory layout**, making it hard to experiment with new optimizations. **Cellato** solves this by offering an embedded C++ DSL that cleanly separates:
