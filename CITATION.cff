@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "Cellato: a DSL for Cellular Automata based on C++ Template Meta-programming"
+authors:
+  - family-names: Brabec
+    given-names: Matyáš
+    orcid: "https://orcid.org/0009-0008-4470-2748"
+    affiliation: "Charles University"
+  - family-names: Klepl
+    given-names: Jiří
+    orcid: "https://orcid.org/0000-0002-2231-4073"
+    affiliation: "Charles University"
+  - family-names: Kruliš
+    given-names: Martin
+    orcid: "https://orcid.org/0000-0002-0985-8949"
+    affiliation: "Charles University"
+repository-code: "https://github.com/matyas-brabec/2025-icooolps-cellato"
+url: "https://github.com/matyas-brabec/2025-icooolps-cellato"
+license: MIT
+keywords:
+  - "domain-specific language"
+  - "cellular automata"
+  - "bit-packing"
+  - "c++ template metaprogramming"
+  - "cuda"
+preferred-citation:
+  type: article
+  title: "Cellato: a DSL for Cellular Automata based on C++ Template Meta-programming"
+  authors:
+    - family-names: Brabec
+      given-names: Matyáš
+      orcid: "https://orcid.org/0009-0008-4470-2748"
+      affiliation: "Charles University"
+    - family-names: Klepl
+      given-names: Jiří
+      orcid: "https://orcid.org/0000-0002-2231-4073"
+      affiliation: "Charles University"
+    - family-names: Kruliš
+      given-names: Martin
+      orcid: "https://orcid.org/0000-0002-0985-8949"
+      affiliation: "Charles University"
+  journal: "Journal of Object Technology"
+  volume: 25
+  issue: 1
+  pages: "1:1-13"
+  year: 2026
+  month: 3
+  issn: "1660-1769"
+  doi: 10.5381/jot.2026.25.1.a13
+  url: "https://www.jot.fm/contents/issue_2026_01/a13.html"
+  notes: "ECOOP 2025 Workshops"
